@@ -1,0 +1,8 @@
+HibernateExamples/bin/com/fooddelivery/datasource/DataMapper.class
+HibernateExamples/bin/com/fooddelivery/datasource/ItemMapper.class
+HibernateExamples/bin/com/fooddelivery/datasource/UserMapper.class
+HibernateExamples/bin/com/fooddelivery/main/main.class
+HibernateExamples/bin/com/fooddelivery/model/Item.class
+HibernateExamples/bin/com/fooddelivery/model/Restaurant.class
+HibernateExamples/bin/com/fooddelivery/model/User.class
+HibernateExamples/bin/com/fooddelivery/service/UserService.class
