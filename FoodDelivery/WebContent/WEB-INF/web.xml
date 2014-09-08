@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <servlet>
+    <servlet-name>LoginController</servlet-name>
+    <servlet-class>com.fooddelivery.presentation.LoginController</servlet-class>
+    <init-param>
+      <javaee:param-name>userName</javaee:param-name>
+      <javaee:param-value>Admin</javaee:param-value>
+    </init-param>
+    <init-param>
+      <javaee:param-name>passWord</javaee:param-name>
+      <javaee:param-value>Admin</javaee:param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginController</servlet-name>
+    <url-pattern>/LoginController</url-pattern>
+  </servlet-mapping>
+</web-app>

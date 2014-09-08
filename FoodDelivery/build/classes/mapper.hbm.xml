@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.fooddelivery.model.User" table="user">
+	<id name="id" column="id">
+		<generator class="increment"/>
+	</id>
+	<property name="username" column="username" />
+	<property name="password" column="password" />
+</class>
+
+<class name="com.fooddelivery.model.Item" table="item">
+	<id name="id" column="id">
+		<generator class="increment"/>
+	</id>
+	<property name="name" column="name" />
+	<property name="catagory" column="catagory" />
+	<property name="price" column="price" />
+	<property name="description" column="description" />
+</class>
+
+<class name="com.fooddelivery.model.MenuItem" table="menuitem">
+    <id name="id" column="id">
+        <generator class="increment"/>
+    </id>
+    <property name="menuid" column="menuid"/>
+    <property name="itemid" column="itemid"/>        
+
+</class>
+
+<class name="com.fooddelivery.model.Menu" table="menu">
+    <id name="id" column="id">
+        <generator class="increment"/>
+    </id>
+    <property name="name" column="name"/>
+    <property name="restaurantid" column="restaurantid"/>
+</class>
+
+</hibernate-mapping>
