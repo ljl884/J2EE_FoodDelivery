@@ -4,7 +4,7 @@ import com.fooddelivery.model.Item;
 import com.fooddelivery.model.User;
 
 public class ItemMapper extends DataMapper{
-	public static void insert(String name,String catagory,int price,String description)
+	public static int insert(String name,String catagory,int price,String description)
 	{
 		init();
 		Item item = new Item();
@@ -14,14 +14,19 @@ public class ItemMapper extends DataMapper{
 		item.setPrice(price);
 
 		session.save(item);
+		int itemid=item.getId();
 		close();
+		return itemid;
 	}
-	public static void insert(Item item){
+	public static int insert(Item item){
 		init();
+		int itemid=-1;
 		if (item!=null) {
 			session.save(item);
+			item.getId();
 		}
 		close();
+		return itemid;
 	}
 	public static void updatePrice(int id,int price){
 		init();
@@ -36,4 +41,6 @@ public class ItemMapper extends DataMapper{
 		session.delete(item);
 		close();
 	}
+	
+	
 }

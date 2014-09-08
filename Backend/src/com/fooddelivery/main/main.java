@@ -10,7 +10,7 @@ public class main {
 		UserService userService=new UserService();
 		ItemService itemService=new ItemService();
 		
-		//itemService.addItem("item1", "china", 10, "good");
+		itemService.addItem(1,"item2", "china", 110, "goooood");
 		//itemService.updateItemPrice(1, 20);
 		//itemService.deleteItem(1);
 	}

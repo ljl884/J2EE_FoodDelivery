@@ -2,6 +2,7 @@ package com.fooddelivery.datasource;
 
 import java.util.List;
 
+import org.apache.commons.collections.map.StaticBucketMap;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,7 +11,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.fooddelivery.model.User;
 
-public class DataMapper {
+public abstract class DataMapper {
 	
 	static SessionFactory sessionFactory;
 	static Session session ;
@@ -29,6 +30,8 @@ public class DataMapper {
 		session.close();
 		sessionFactory.close();
 	}
+	
+	
 	
 	
 	
