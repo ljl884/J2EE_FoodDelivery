@@ -12,7 +12,16 @@ public class Item {
 	private int price;
 	private String catagory;
 	private String description;
+	private int menuid;
 	
+	public int getMenuid() {
+		return menuid;
+	}
+
+	public void setMenuid(int menuid) {
+		this.menuid = menuid;
+	}
+
 	@Id
 	public int getId(){
 		return id;

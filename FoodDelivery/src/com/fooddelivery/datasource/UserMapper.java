@@ -11,30 +11,31 @@ public class UserMapper extends DataMapper{
 	public static void all()
 	{
 		init();
-		Query q = session.createQuery("select c.id,c.username,c.password from user as c");		
+		Query q = session.createQuery("from User");		
 		List l = q.list();
 		for(int i=0;i<l.size();i++)
 		{
-			//TestDb user = (TestDb)l.get(i);
-			//System.out.println(user.getUsername());
-
-			  Object[] row = (Object[])l.get(i);;
-			  Long id = (Long)row[0];
-			  String name = (String)row[1];  
-			  System.out.println(id+" "+name);
+			User user = (User) l.get(i);
+			System.out.println(user.getUsername()+" "+user.getPassword());
 		}
 		close();
 	}
 	
 	
-	public static User load()
+	public static User load(String username)
 	{
 		init();
-		User obj = (User) session.load(User.class, new Long(2));
+		//User obj = (User) session.load(User.class, new Long(2));
 		//session.createQuery(arg0)
-		
+		String hqlString="from User where username='"+username+"'";
+		Query query=session.createQuery(hqlString);
+		if (query.list().size()==0) {
+			return null;
+		}
+		else{
+		User user = (User) query.list().get(0);
 		close();
-		return obj;
+		return user;}
 	}
 	
 	

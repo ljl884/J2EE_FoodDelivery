@@ -1,6 +1,9 @@
 package com.fooddelivery.service;
 
+import javax.jws.soap.SOAPBinding.Use;
+
 import com.fooddelivery.datasource.UserMapper;
+import com.fooddelivery.model.User;
 
 public class UserService {
 	
@@ -10,12 +13,20 @@ public class UserService {
 		return true;
 	}
 	public void getUserList(){
-		
+		UserMapper.all();
 	}
 	
-	public boolean authenticate(String username, String password){		
+	public User authenticate(String username, String password){		
 		
-		UserMapper.insert("123", "456");
-		return true;
+		User user=UserMapper.load(username);
+		if (user==null) {
+			return null;
+		}
+		else if(!(user.getPassword().equals(password)))
+			return null;
+		else
+		return user;
+		 
+		
 	}
 }
