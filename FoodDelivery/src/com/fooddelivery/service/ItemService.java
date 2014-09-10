@@ -29,7 +29,7 @@ public class ItemService {
 		
 	}
 	public Item getItemById(int itemid){
-		return ItemMapper.getItem(id);
+		return ItemMapper.getItem(itemid);
 	}
 	
 	

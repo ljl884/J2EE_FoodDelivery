@@ -11,7 +11,8 @@ hahahahahahhahahahaha
 
 <a href="SimpleForm.html">Login Page</a>
  <form action="MenuController" method="post">
- <%@ page import="com.swen90007.web.*" %>
+ <%@ page import="com.fooddelivery.presentation.MenuController" %>
+ <%@ page import="com.fooddelivery.model.User" %>
  <% User user = (User)session.getAttribute("user");%>
  Welcome <%=user.getUsername()%>
   <input type="submit" value="<%=user.getUsername()%>">

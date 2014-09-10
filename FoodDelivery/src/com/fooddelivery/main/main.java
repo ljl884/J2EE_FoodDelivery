@@ -2,6 +2,7 @@ package com.fooddelivery.main;
 
 import com.fooddelivery.datasource.ItemMapper;
 import com.fooddelivery.service.ItemService;
+import com.fooddelivery.service.RestaurantService;
 import com.fooddelivery.service.UserService;
 
 public class main {
@@ -9,12 +10,15 @@ public class main {
 		
 		UserService userService=new UserService();
 		ItemService itemService=new ItemService();
+		RestaurantService restaurantService = new RestaurantService();
 		
+		
+		restaurantService.getFirstMenuItemsFromRestaurant(1);
 		//itemService.addItem(1,"°¢Ë¹¶Ù", "·Å´ó", 50, "¹þ¹þ¹þ¹þ");
 		//itemService.updateItemPrice(1, 20);
 		//itemService.deleteItem(1);
 		//userService.getUserList();
-		itemService.getItemByMenuId(1);
+		//itemService.getItemByMenuId(1);
 	}
 	
 }

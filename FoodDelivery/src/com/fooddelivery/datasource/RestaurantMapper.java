@@ -41,4 +41,5 @@ public class RestaurantMapper extends DataMapper {
 		return getRestaurant("from Restaurant where name='"+name+"'");
 	}
 	
+	
 }
