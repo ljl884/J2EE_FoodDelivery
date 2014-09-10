@@ -58,4 +58,5 @@ public class UserMapper extends DataMapper{
 		session.save(user);
 		close();
 	}
+	
 }

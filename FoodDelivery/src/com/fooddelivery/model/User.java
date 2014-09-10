@@ -4,6 +4,15 @@ public class User {
 private String username;
 private String password;
 private int id;
+private int restaurantid;
+
+public int getRestaurantid() {
+	return restaurantid;
+}
+
+public void setRestaurantid(int restaurantid) {
+	this.restaurantid = restaurantid;
+}
 
 public int getId() {
 return id;
@@ -28,4 +37,6 @@ public void setPassword(String password){
 public String getPassword(){
 	return password;
 }
+
+
 }
