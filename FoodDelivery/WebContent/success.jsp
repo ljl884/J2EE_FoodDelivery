@@ -8,6 +8,6 @@
 </head>
 <body>
 Welcome coming back.
-<a href="Menu.jsp">Go to menu</a>
+<a href="Search.jsp">Go TO Search Page</a>
 </body>
 </html>

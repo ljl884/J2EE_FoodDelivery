@@ -10,7 +10,7 @@ public class Item {
 	private int id;
 	private String name;
 	private int price;
-	private String catagory;
+	private String catagory;//spelling
 	private String description;
 	private int menuid;
 	

@@ -7,6 +7,27 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ page import="com.fooddelivery.model.*" %> 
+<%@ page import="java.util.*" %>
+<%
+ArrayList<Item> list=new ArrayList<Item>();
+list = (ArrayList<Item>)request.getAttribute("result");	
+for(Item item:list) {
 
+out.println(item.getId());
+
+out.println(item.getName());
+
+out.println(item.getCatagory());
+
+out.println(item.getPrice());
+out.println(item.getDescription());
+%><br>
+<% 
+
+}
+
+
+%>
 </body>
 </html>

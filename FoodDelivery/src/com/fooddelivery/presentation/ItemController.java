@@ -1,21 +1,29 @@
 package com.fooddelivery.presentation;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fooddelivery.model.Item;
+import com.fooddelivery.model.Restaurant;
+import com.fooddelivery.service.ItemService;
+
 /**
- * Servlet implementation class Trans
+ * Servlet implementation class ItemController
  */
-public class MenuController extends HttpServlet {
+@WebServlet("/ItemController")
+public class ItemController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MenuController() {
+    public ItemController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -25,7 +33,6 @@ public class MenuController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	
 	}
 
 	/**
@@ -33,7 +40,12 @@ public class MenuController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.sendRedirect("Menu.jsp");
+		String search_id=request.getParameter("id");
+		int new_id=Integer.parseInt(search_id);
+		ItemService is=new ItemService();
+		List<Item> result=is.getItemByMenuId(new_id);
+		request.setAttribute("result", result); 
+		getServletConfig().getServletContext().getRequestDispatcher("/ItemList.jsp").forward(request,response);;
 	}
 
 }
