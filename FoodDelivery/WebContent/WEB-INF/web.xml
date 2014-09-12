@@ -16,4 +16,12 @@
     <servlet-name>SearchController</servlet-name>
     <url-pattern>/SearchController</url-pattern>
   </servlet-mapping>
+ <servlet>
+    <servlet-name>ItemController</servlet-name>
+    <servlet-class>com.fooddelivery.presentation.ItemController</servlet-class>
+  </servlet>
+   <servlet-mapping>
+    <servlet-name>ItemController</servlet-name>
+    <url-pattern>/ItemController</url-pattern>
+  </servlet-mapping>
 </web-app>

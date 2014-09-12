@@ -29,6 +29,9 @@ if(request.getAttribute("cat_result")!=null){
 for(Restaurant restaurant:list) {
 int id=restaurant.getId();
 
+%>
+<a href="ItemController?id=<%=id %>">
+<%
 out.println(restaurant.getId());
 
 out.println(restaurant.getName());
@@ -38,7 +41,7 @@ out.println(restaurant.getCategory());
 out.println(restaurant.getLocation());
 out.println(restaurant.getAverageprice());
 %>
-
+</a>
 <br>
 <%
 }

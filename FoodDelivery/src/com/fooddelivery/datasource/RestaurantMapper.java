@@ -27,7 +27,7 @@ public class RestaurantMapper extends DataMapper {
 	}
 	
 	public static List<Restaurant> getRestaurantByPrice(String price){
-		return getRestaurant("from Restaurant where price='"+price+"'");
+		return getRestaurant("from Restaurant where averageprice='"+price+"'");
 	}
 	public static List<Restaurant> getRestaurantByLocation(String location){
 		return getRestaurant("from Restaurant where location='"+location+"'");

@@ -7,6 +7,7 @@
 	</id>
 	<property name="username" column="username" />
 	<property name="password" column="password" />
+	<property name="restaurantid" column="restauarantid"/>
 	
 </class>
 
