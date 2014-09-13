@@ -9,12 +9,12 @@
     <url-pattern>/LoginController</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>SearchController</servlet-name>
-    <servlet-class>com.fooddelivery.presentation.SearchController</servlet-class>
+    <servlet-name>RestaurantController</servlet-name>
+    <servlet-class>com.fooddelivery.presentation.RestaurantController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>SearchController</servlet-name>
-    <url-pattern>/SearchController</url-pattern>
+    <servlet-name>RestaurantController</servlet-name>
+    <url-pattern>/RestaurantController</url-pattern>
   </servlet-mapping>
  <servlet>
     <servlet-name>ItemController</servlet-name>

@@ -9,6 +9,15 @@
 <body>
 <%@ page import="com.fooddelivery.model.*" %> 
 <%@ page import="java.util.*" %>
+<p align="right"><% User user = (User)session.getAttribute("user");%>
+<%if (user==null){%>
+   <a href="index.html">Login Here</a>
+ <%
+	}
+else 
+	out.println("User:"+user.getUsername());%></p>
+<h3>Searching Results</h3>
+<p>Item_Id&nbsp;&nbsp;Item_Name&nbsp;&nbsp;Item_Category&nbsp;&nbsp;Item_Price&nbsp;&nbsp;Item_Description </p>
 <%
 ArrayList<Item> list=new ArrayList<Item>();
 list = (ArrayList<Item>)request.getAttribute("result");	
@@ -23,11 +32,9 @@ out.println(item.getCatagory());
 out.println(item.getPrice());
 out.println(item.getDescription());
 %><br>
-<% 
-
+<%
 }
-
-
 %>
+<a href="AddItem.jsp">Click Here to Add Item</a>
 </body>
 </html>

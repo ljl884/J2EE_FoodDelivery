@@ -4,10 +4,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<%@ page import="com.fooddelivery.model.*" %> 
 <title>Login in success</title>
 </head>
-<body>
-Welcome coming back.
+<body bgcolor="blue">
+<% User user = (User)session.getAttribute("user");%>
+<%if (user==null){%>
+   <a href="index.html"><%out.println("Login here");%></a>
+ 	<%
+	}
+else %>
+<h3>Welcome <%=user.getUsername()%></h3>
+
 <a href="Search.jsp">Go TO Search Page</a>
 </body>
 </html>

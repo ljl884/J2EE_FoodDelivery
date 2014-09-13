@@ -24,33 +24,39 @@ if(request.getAttribute("cat_result")!=null){
 	list = (ArrayList<Restaurant>)request.getAttribute("cat_result");
 }
 %>
-
+<p align="right"><% User user = (User)session.getAttribute("user");%>
+<%if (user==null){%>
+   <a href="index.html">Login Here</a>
+ <%
+	}
+else 
+	out.println("User:"+user.getUsername());%></p>
+<h3>Searching Results</h3>
+<p>Restaurant_Id &nbsp;&nbsp;  Restaurant_Name  &nbsp;&nbsp; Restaurant_Category &nbsp;&nbsp;  Restaurant_Location  &nbsp;&nbsp; Restaurant_AveragePrice</p>
 <%
 for(Restaurant restaurant:list) {
 int id=restaurant.getId();
 
 %>
-<a href="ItemController?id=<%=id %>">
-<%
-out.println(restaurant.getId());
 
-out.println(restaurant.getName());
+<a href="ItemController?id=<%=id %>">
+<tr>
+<td><%out.println(restaurant.getId());%>
+</td>
+
+<% out.println(restaurant.getName());
 
 out.println(restaurant.getCategory());
 
 out.println(restaurant.getLocation());
 out.println(restaurant.getAverageprice());
 %>
+</tr>
 </a>
 <br>
 <%
 }
 %>
-<br>
-Enter the restaurant's ID which you are interested in:
-<form action="ItemController" method="post">
-<input type="text" name="id">
-<input type="submit" value="view menu">
-</form>
+
 </body>
 </html>
