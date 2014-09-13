@@ -7,7 +7,7 @@
 <%@ page import="com.fooddelivery.model.*" %> 
 <title>Login in success</title>
 </head>
-<body bgcolor="blue">
+<body>
 <% User user = (User)session.getAttribute("user");%>
 <%if (user==null){%>
    <a href="index.html"><%out.println("Login here");%></a>
