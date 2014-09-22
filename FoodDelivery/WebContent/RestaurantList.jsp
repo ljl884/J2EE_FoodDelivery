@@ -40,9 +40,7 @@ int id=restaurant.getId();
 %>
 
 <a href="ItemController?id=<%=id %>">
-<tr>
-<td><%out.println(restaurant.getId());%>
-</td>
+<%out.println(restaurant.getId());%>
 
 <% out.println(restaurant.getName());
 
@@ -51,7 +49,6 @@ out.println(restaurant.getCategory());
 out.println(restaurant.getLocation());
 out.println(restaurant.getAverageprice());
 %>
-</tr>
 </a>
 <br>
 <%

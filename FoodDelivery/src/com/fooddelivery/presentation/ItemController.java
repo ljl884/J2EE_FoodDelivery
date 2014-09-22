@@ -35,11 +35,11 @@ public class ItemController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String search_id=request.getParameter("id");
 		int new_id=Integer.parseInt(search_id);
-		request.getSession().setAttribute("item_id", new_id);
+		request.getSession().setAttribute("menu_id", new_id);
 		ItemService is=new ItemService();
 		List<Item> result=is.getItemByMenuId(new_id);
 		request.setAttribute("result", result); 
-		getServletConfig().getServletContext().getRequestDispatcher("/ItemList.jsp").forward(request,response);;
+		getServletConfig().getServletContext().getRequestDispatcher("/ItemList.jsp").forward(request,response);
 	}
 
 	/**
@@ -47,14 +47,17 @@ public class ItemController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		String search_id=request.getParameter("id");
-//		int new_id=Integer.parseInt(search_id);
-//		ItemService is=new ItemService();
-//		RestaurantService rs = new RestaurantService();
-//		
-//		List<Item> result=is.getItemByMenuId(rs.getFirstMenuFromRestaurant(new_id).getId());
-//		request.setAttribute("result", result); 
-//		getServletConfig().getServletContext().getRequestDispatcher("/ItemList.jsp").forward(request,response);;
+		//int menuid,String name,String catagory,int price,String description
+		String name=request.getParameter("name");
+		String catagory=request.getParameter("catagory");
+		String price=request.getParameter("price");
+		int new_price=Integer.parseInt(price);
+		String description=request.getParameter("description");
+		request.getSession().setAttribute("addname",name );
+		request.getSession().setAttribute("addcatagory",catagory );
+		request.getSession().setAttribute("addprice",new_price );
+		request.getSession().setAttribute("adddescription",description );
+		getServletConfig().getServletContext().getRequestDispatcher("/AddItemSuccess.jsp").forward(request,response);
 	}
 
 }
