@@ -24,13 +24,7 @@ if(request.getAttribute("cat_result")!=null){
 	list = (ArrayList<Restaurant>)request.getAttribute("cat_result");
 }
 %>
-<p align="right"><% User user = (User)session.getAttribute("user");%>
-<%if (user==null){%>
-   <a href="index.html">Login Here</a>
- <%
-	}
-else 
-	out.println("User:"+user.getUsername());%></p>
+<jsp:include page="header.jsp"/>
 <h3>Searching Results</h3>
 <p>Restaurant_Id &nbsp;&nbsp;  Restaurant_Name  &nbsp;&nbsp; Restaurant_Category &nbsp;&nbsp;  Restaurant_Location  &nbsp;&nbsp; Restaurant_AveragePrice</p>
 <%
@@ -39,7 +33,7 @@ int id=restaurant.getId();
 
 %>
 
-<a href="ItemController?id=<%=id %>">
+<a href="ItemController?type=view&id=<%=id %>">
 <%out.println(restaurant.getId());%>
 
 <% out.println(restaurant.getName());

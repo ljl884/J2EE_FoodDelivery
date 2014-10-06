@@ -1,5 +1,6 @@
 package com.fooddelivery.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fooddelivery.datasource.ItemMapper;
@@ -34,13 +35,20 @@ public class RestaurantService {
 	}
 	
 	public List<Item> getFirstMenuItemsFromRestaurant(int restaurantid){
+		ArrayList<Item> resultItems =new ArrayList<Item>();
 		Menu menu = getFirstMenuFromRestaurant(restaurantid);
-		return  ItemMapper.getItemByMenuId(menu.getId());
+		
+		resultItems =  (ArrayList<Item>) ItemMapper.getItemByMenuId(menu.getId());
+		return resultItems;
 	}
 	
-	public static Restaurant getRestaurantByItemId(int itemid){
+	public int getRestaurantIdByItemId(int itemid){
+		return MenuMapper.getMenu(ItemMapper.getItem(itemid).getMenuid()).getRestaurantid();
 		
-		return null;
+	}
+	public int getRestaurantIdByMenuId(int menuid){
+		return MenuMapper.getMenu(menuid).getRestaurantid();
+		
 	}
 	
 	

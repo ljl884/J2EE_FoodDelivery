@@ -7,6 +7,7 @@ import org.hibernate.Query;
 
 import com.fooddelivery.model.Item;
 import com.fooddelivery.model.Menu;
+import com.fooddelivery.model.Restaurant;
 import com.fooddelivery.model.User;
 
 public class MenuMapper extends DataMapper{
@@ -56,4 +57,6 @@ public class MenuMapper extends DataMapper{
 		close();
 		return list;}
 	}
+
+	
 }

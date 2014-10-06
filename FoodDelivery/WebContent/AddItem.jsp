@@ -4,8 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Add an item</title>
 </head>
+<jsp:include page="header.jsp"/>
 <%@ page import="com.fooddelivery.model.*" %>
 <%@ page import="com.fooddelivery.service.*" %>
 <body>

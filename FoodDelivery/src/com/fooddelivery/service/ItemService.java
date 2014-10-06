@@ -6,6 +6,8 @@ import org.hibernate.Query;
 
 import com.fooddelivery.datasource.ItemMapper;
 import com.fooddelivery.datasource.MenuItemMapper;
+import com.fooddelivery.datasource.MenuMapper;
+import com.fooddelivery.datasource.RestaurantMapper;
 import com.fooddelivery.model.Item;
 
 public class ItemService {
@@ -31,6 +33,7 @@ public class ItemService {
 	public Item getItemById(int itemid){
 		return ItemMapper.getItem(itemid);
 	}
+	
 	
 	
 }

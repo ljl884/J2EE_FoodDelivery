@@ -1,3 +1,4 @@
+<%@page import="com.fooddelivery.datasource.MenuMapper"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,20 +10,30 @@
 <body>
 <%@ page import="com.fooddelivery.model.*" %> 
 <%@ page import="java.util.*" %>
-<p align="right"><% User user = (User)session.getAttribute("user");%>
-<%if (user==null){%>
-   <a href="index.html">Login Here</a>
+<jsp:include page="header.jsp"/>
+<% User user = (User)session.getAttribute("user");%>
+<%
+boolean isOwner=false;
+int user_restaurant = 0;
+
+if (user==null){%>
+   
  <%
 	}
-else 
-	out.println("User:"+user.getUsername());%></p>
+else {
+	user_restaurant=user.getRestaurantid();
+	if(user_restaurant==1)
+		isOwner=true;
+	} %>
 <h3>Searching Results</h3>
-<p>Item_Id&nbsp;&nbsp;Item_Name&nbsp;&nbsp;Item_Category&nbsp;&nbsp;Item_Price&nbsp;&nbsp;Item_Description </p>
+<p>Id&nbsp;&nbsp;Name&nbsp;&nbsp;Category&nbsp;&nbsp;Price&nbsp;&nbsp;Description </p>
 <%
 ArrayList<Item> list=new ArrayList<Item>();
 list = (ArrayList<Item>)request.getAttribute("result");	
-for(Item item:list) {
 
+//System.out.print(menu.getRestaurantid());
+for(Item item:list) {
+	
 out.println(item.getId());
 
 out.println(item.getName());
@@ -31,10 +42,20 @@ out.println(item.getCatagory());
 
 out.println(item.getPrice());
 out.println(item.getDescription());
-%><br>
+
+%>
+
+<% if(isOwner){ %><a  href="ItemController?type=delete&id=<%=item.getId()%>">delete</a><br>
+<%}
+else{%><br>
 <%
+
+}
 }
 %>
+<% if(isOwner){ %>
 <a href="AddItem.jsp">Click Here to Add Item</a>
+<%} %>
+
 </body>
 </html>

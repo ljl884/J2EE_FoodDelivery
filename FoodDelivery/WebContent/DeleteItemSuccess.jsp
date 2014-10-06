@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Delete Item Success</title>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -13,15 +13,10 @@
 <%@ page import="java.util.*" %>
 <% 
 User user =(User)session.getAttribute("user");
-String name=(String)session.getAttribute("addname");
-String catagory=(String)session.getAttribute("addcatagory");
-int price=((Integer)session.getAttribute("addprice")).intValue();
-String description=(String)session.getAttribute("adddescription");
-int menu_id=((Integer)session.getAttribute("menu_id")).intValue();
-ItemService is = new ItemService();
-is.addItem(menu_id, name, catagory, price, description);
+
 %>
-AddItem Success
+Delete Success
+
 <a href="ItemController?type=view&id=<%=user.getRestaurantid()%>">back</a>
 </body>
 </html>

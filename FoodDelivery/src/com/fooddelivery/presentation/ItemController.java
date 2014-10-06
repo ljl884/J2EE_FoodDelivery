@@ -37,9 +37,20 @@ public class ItemController extends HttpServlet {
 		int new_id=Integer.parseInt(search_id);
 		request.getSession().setAttribute("menu_id", new_id);
 		ItemService is=new ItemService();
+		String typeString = request.getParameter("type");
+		if(typeString.equals("delete")){
+	
+			is.deleteItem(new_id);
+			getServletConfig().getServletContext().getRequestDispatcher("/DeleteItemSuccess.jsp").forward(request,response);
+
+		}
+		else{
 		List<Item> result=is.getItemByMenuId(new_id);
 		request.setAttribute("result", result); 
 		getServletConfig().getServletContext().getRequestDispatcher("/ItemList.jsp").forward(request,response);
+		}
+		
+		
 	}
 
 	/**
@@ -48,6 +59,15 @@ public class ItemController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//int menuid,String name,String catagory,int price,String description
+		String deleteidString = request.getParameter("delete_id");
+		if (deleteidString!=null) {
+			ItemService is=new ItemService();
+			is.deleteItem(Integer.parseInt(deleteidString));
+			
+			getServletConfig().getServletContext().getRequestDispatcher("/DeleteItemSuccess.jsp").forward(request,response);
+		
+		}
+		else{
 		String name=request.getParameter("name");
 		String catagory=request.getParameter("catagory");
 		String price=request.getParameter("price");
@@ -57,7 +77,7 @@ public class ItemController extends HttpServlet {
 		request.getSession().setAttribute("addcatagory",catagory );
 		request.getSession().setAttribute("addprice",new_price );
 		request.getSession().setAttribute("adddescription",description );
-		getServletConfig().getServletContext().getRequestDispatcher("/AddItemSuccess.jsp").forward(request,response);
+		getServletConfig().getServletContext().getRequestDispatcher("/AddItemSuccess.jsp").forward(request,response);}
 	}
 
 }

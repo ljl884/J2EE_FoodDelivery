@@ -8,13 +8,7 @@
 </head>
 <body>
 <%@ page import="com.fooddelivery.model.*" %> 
-<p align="right"><% User user = (User)session.getAttribute("user");%>
-<%if (user==null){%>
-   <a href="index.html">Login Here</a>
- <%
-	}
-else 
-	out.println("User:"+user.getUsername());%></p>
+<jsp:include page="header.jsp"/>
 <h3>Please enter the key word:</h3>
 <form action="RestaurantController" method="post">
 <input type="text" name=keywords ><br/>

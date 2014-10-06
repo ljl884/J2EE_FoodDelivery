@@ -7,7 +7,8 @@
 	</id>
 	<property name="username" column="username" />
 	<property name="password" column="password" />
-	<property name="restaurantid" column="restaurantid" />
+	<property name="restaurantid" column="restaurantid"/>
+	
 </class>
 
 <class name="com.fooddelivery.model.Item" table="item">

@@ -1,6 +1,7 @@
 package com.fooddelivery.main;
 
 import com.fooddelivery.datasource.ItemMapper;
+import com.fooddelivery.model.Menu;
 import com.fooddelivery.service.ItemService;
 import com.fooddelivery.service.RestaurantService;
 import com.fooddelivery.service.UserService;
@@ -12,8 +13,11 @@ public class main {
 		ItemService itemService=new ItemService();
 		RestaurantService restaurantService = new RestaurantService();
 		
-		
-		restaurantService.getFirstMenuItemsFromRestaurant(1);
+		Menu menu=restaurantService.getFirstMenuFromRestaurant(1);
+		System.out.print("menuid:"+menu.getId());
+		//restaurantService.getRestaurantsByPrice(30);
+		//userService.authenticate("a", "1").getRestaurantid();
+		//restaurantService.getFirstMenuItemsFromRestaurant(1);
 		//itemService.addItem(1,"°¢Ë¹¶Ù", "·Å´ó", 50, "¹þ¹þ¹þ¹þ");
 		//itemService.updateItemPrice(1, 20);
 		//itemService.deleteItem(1);
