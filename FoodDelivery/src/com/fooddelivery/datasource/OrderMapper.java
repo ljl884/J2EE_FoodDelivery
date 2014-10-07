@@ -2,7 +2,14 @@ package com.fooddelivery.datasource;
 
 
 
+import java.util.ArrayList;
+
+import org.hibernate.Query;
+
+import com.fooddelivery.model.Item;
+import com.fooddelivery.model.Menu;
 import com.fooddelivery.model.Order;
+import com.fooddelivery.model.OrderItem;
 import com.sun.org.apache.xpath.internal.operations.Or;
 
 public class OrderMapper extends DataMapper {
@@ -27,8 +34,20 @@ public class OrderMapper extends DataMapper {
 	
 	public static Order getOrder(int id){
 		init();
-		Order order = (Order)session.load(Order.class, id);
+		Order item = (Order)session.get(Order.class, id);
 		close();
-		return order;
+		return item;
+		}
+	
+	public static int getRestaurantId(int orderid){
+		int restaurantid=-1;
+		init();
+		Order order = (Order)session.load(Order.class, orderid);
+		if (order!=null) {
+			restaurantid = order.getRestaurantid();
+		}
+		
+		close();
+		return restaurantid;
 	}
 }

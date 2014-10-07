@@ -1,60 +1,32 @@
 package com.fooddelivery.model;
 
-import java.util.ArrayList;
-
-import org.hibernate.annotations.Entity;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
-public class Order {
+public class Order{
 	private int id;
-	private ArrayList<OrderItem> orderItems;
-	private CustomerInfo customerInfo;
-	private DeliverAddress deliverAddress;
-	private PaymentMethod paymentMethod;
-	private boolean confirmed = false;
+	private int restaurantid;
+	private String status;
 	
-	public Order(ArrayList<OrderItem> orderItems, CustomerInfo customerInfo,DeliverAddress deliverAddress,PaymentMethod paymentMethod){
-		this.orderItems = orderItems;
-		this.customerInfo = customerInfo;
-		this.deliverAddress = deliverAddress;
-		this.paymentMethod = paymentMethod;
-	}
+	@Id
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public ArrayList<OrderItem> getOrderItems() {
-		return orderItems;
+	public int getRestaurantid() {
+		return restaurantid;
 	}
-	public void setOrderItems(ArrayList<OrderItem> orderItems) {
-		this.orderItems = orderItems;
+	public void setRestaurantid(int restaurantid) {
+		this.restaurantid = restaurantid;
 	}
-	public CustomerInfo getCustomerInfo() {
-		return customerInfo;
+	public String getStatus() {
+		return status;
 	}
-	public void setCustomerInfo(CustomerInfo customerInfo) {
-		this.customerInfo = customerInfo;
-	}
-	public DeliverAddress getDeliverAddress() {
-		return deliverAddress;
-	}
-	public void setDeliverAddress(DeliverAddress deliverAddress) {
-		this.deliverAddress = deliverAddress;
-	}
-	public PaymentMethod getPaymentMethod() {
-		return paymentMethod;
-	}
-	public void setPaymentMethod(PaymentMethod paymentMethod) {
-		this.paymentMethod = paymentMethod;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
-	public boolean isConfirmed(){
-		return confirmed;
-	}
-	
-	public void confirm(){
-		confirmed = true;
-	}
 }

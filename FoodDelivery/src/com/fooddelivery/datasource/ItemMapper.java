@@ -51,7 +51,7 @@ public class ItemMapper extends DataMapper{
 	
 	public static Item getItem(int id){
 		init();
-		Item item = (Item)session.load(Item.class, id);
+		Item item = (Item)session.get(Item.class, id);
 		close();
 		return item;
 	}

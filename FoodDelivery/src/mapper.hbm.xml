@@ -22,6 +22,15 @@
 	<property name="menuid" column="menuid" />
 </class>
 
+<class name="com.fooddelivery.model.Order" table="pendingorder">
+	<id name="id" column="id">
+		<generator class="increment"/>
+	</id>
+	<property name="restaurantid" column="restaurantid" />
+	<property name="status" column="status" />
+	
+</class>
+
 <class name="com.fooddelivery.model.MenuItem" table="menuitem">
     <id name="id" column="id">
         <generator class="increment"/>
@@ -47,6 +56,39 @@
     <property name="category" column="category"/>
     <property name="location" column="location"/>
     <property name="averageprice" column="averageprice"/>
+</class>
+
+
+<class name="com.fooddelivery.model.CustomerInfo" table="customerinfo">
+    <id name="id" column="id">
+        <generator class="increment"/>
+    </id>
+    <property name="name" column="name"/>
+    <property name="orderid" column="orderid"/>
+</class>
+
+<class name="com.fooddelivery.model.DeliverAddress" table="deliveraddress">
+    <id name="id" column="id">
+        <generator class="increment"/>
+    </id>
+    <property name="address" column="address"/>
+    <property name="orderid" column="orderid"/>
+</class>
+
+<class name="com.fooddelivery.model.PaymentMethod" table="paymentmethod">
+    <id name="id" column="id">
+        <generator class="increment"/>
+    </id>
+    <property name="method" column="name"/>
+    <property name="orderid" column="orderid"/>
+</class>
+
+<class name="com.fooddelivery.model.OrderItem" table="orderitem">
+    <id name="id" column="id">
+        <generator class="increment"/>
+    </id>
+    <property name="itemid" column="itemid"/>
+    <property name="orderid" column="orderid"/>
 </class>
 
 </hibernate-mapping>

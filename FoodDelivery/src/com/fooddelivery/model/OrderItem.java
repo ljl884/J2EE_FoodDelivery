@@ -5,24 +5,26 @@ import org.hibernate.annotations.Entity;
 @Entity
 public class OrderItem {
 	private int id;
-	private int itemId;
+	private int itemid;
+	private int orderid;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getItemId() {
-		return itemId;
+	public int getItemid() {
+		return itemid;
 	}
-	public void setItemId(int itemId) {
-		this.itemId = itemId;
+	public void setItemid(int itemid) {
+		this.itemid = itemid;
 	}
-	public int getOrderId() {
-		return orderId;
+	public int getOrderid() {
+		return orderid;
 	}
-	public void setOrderId(int orderId) {
-		this.orderId = orderId;
+	public void setOrderid(int orderid) {
+		this.orderid = orderid;
 	}
-	private int orderId;
+
+	
 }
