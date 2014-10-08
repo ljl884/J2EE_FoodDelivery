@@ -7,6 +7,7 @@ public class OrderItem {
 	private int id;
 	private int itemid;
 	private int orderid;
+	private int count;
 	public int getId() {
 		return id;
 	}
@@ -24,6 +25,12 @@ public class OrderItem {
 	}
 	public void setOrderid(int orderid) {
 		this.orderid = orderid;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
 	}
 
 	

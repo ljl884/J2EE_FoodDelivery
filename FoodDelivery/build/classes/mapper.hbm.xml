@@ -28,6 +28,7 @@
 	</id>
 	<property name="restaurantid" column="restaurantid" />
 	<property name="status" column="status" />
+	<property name="userid" column="userid" />
 	
 </class>
 
@@ -79,7 +80,7 @@
     <id name="id" column="id">
         <generator class="increment"/>
     </id>
-    <property name="method" column="name"/>
+    <property name="name" column="name"/>
     <property name="orderid" column="orderid"/>
 </class>
 
@@ -89,6 +90,7 @@
     </id>
     <property name="itemid" column="itemid"/>
     <property name="orderid" column="orderid"/>
+    <property name="count" column="count"/>
 </class>
 
 </hibernate-mapping>

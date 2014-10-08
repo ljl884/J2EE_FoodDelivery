@@ -14,6 +14,7 @@ public class PaymentMethodMapper extends DataMapper{
 			session.save(paymentMethod);
 			id = paymentMethod.getId();
 		}
+		close();
 		return id;
 	}
 	
@@ -33,7 +34,7 @@ public class PaymentMethodMapper extends DataMapper{
 		}
 		else{
 			PaymentMethod paymentMethod = (PaymentMethod)query.list().get(0);
-			System.out.println(paymentMethod.getMethod());
+			System.out.println(paymentMethod.getName());
 			return paymentMethod;
 		}
 	}

@@ -8,6 +8,7 @@ public class Order{
 	private int id;
 	private int restaurantid;
 	private String status;
+	private int userid;
 	
 	@Id
 	public int getId() {
@@ -27,6 +28,12 @@ public class Order{
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	public int getUserid() {
+		return userid;
+	}
+	public void setUserid(int userid) {
+		this.userid = userid;
 	}
 	
 }

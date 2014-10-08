@@ -5,7 +5,7 @@ import org.hibernate.annotations.Entity;
 @Entity
 public class PaymentMethod {
 	private int id;
-	private String method;
+	private String name;
 	private int orderid;
 	public int getId() {
 		return id;
@@ -13,11 +13,11 @@ public class PaymentMethod {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getMethod() {
-		return method;
+	public String getName() {
+		return name;
 	}
-	public void setMethod(String method) {
-		this.method = method;
+	public void setName(String method) {
+		this.name = method;
 	}
 	public int getOrderid() {
 		return orderid;

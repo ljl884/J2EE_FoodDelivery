@@ -3,6 +3,7 @@ package com.fooddelivery.datasource;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.Query;
 
@@ -49,5 +50,38 @@ public class OrderMapper extends DataMapper {
 		
 		close();
 		return restaurantid;
+	}
+	
+	public static List<Order> getOrdersByRestaurantId(int restaurantId){
+		init();
+		String hqlString="from Order where restaurantid='"+restaurantId+"'";
+		Query query=session.createQuery(hqlString);
+		List l = query.list();
+		ArrayList<Order> list = new ArrayList<Order>();
+		for(int i=0;i<l.size();i++)
+		{
+			Order order= (Order) l.get(i);
+			list.add(order);
+			
+		}
+		close();
+		return list;
+		
+	}
+	public static List<Order> getOrdersByUserId(int userid){
+		init();
+		String hqlString="from Order where userid='"+userid+"'";
+		Query query=session.createQuery(hqlString);
+		List l = query.list();
+		ArrayList<Order> list = new ArrayList<Order>();
+		for(int i=0;i<l.size();i++)
+		{
+			Order order= (Order) l.get(i);
+			list.add(order);
+			
+		}
+		close();
+		return list;
+		
 	}
 }

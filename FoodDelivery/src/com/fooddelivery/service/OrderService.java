@@ -1,6 +1,7 @@
 package com.fooddelivery.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.fooddelivery.datasource.CustomerInfoMapper;
 import com.fooddelivery.datasource.DeliverAddressMapper;
@@ -17,11 +18,11 @@ import com.fooddelivery.model.PendingOrder;
 public class OrderService {
 	
 	public int createOrder(PendingOrder order){
-		return createOrder(order.getRestaurantid(), order.getOrderItems(), order.getCustomerInfo(), order.getPaymentMethod(), order.getDeliverAddress());
+		return createOrder(order.getOrder().getRestaurantid(),order.getOrder().getUserid(), order.getOrderItems(), order.getCustomerInfo(), order.getPaymentMethod(), order.getDeliverAddress());
 		
 	}
 	
-	public int createOrder(int restaurantId,ArrayList<OrderItem> orderItems, CustomerInfo customerInfo, PaymentMethod paymentMethod, DeliverAddress deliverAddress){
+	public int createOrder(int restaurantId,int userid, ArrayList<OrderItem> orderItems, CustomerInfo customerInfo, PaymentMethod paymentMethod, DeliverAddress deliverAddress){
 		Order order = new Order();
 		order.setRestaurantid(restaurantId);
 		order.setStatus("new");		
@@ -64,6 +65,23 @@ public class OrderService {
 			order.setStatus("confirmed");
 		}
 		
+	}
+	
+	public List<PendingOrder> getOrdersByRestaurantId(int restaurantid){
+		ArrayList<PendingOrder> result = new ArrayList<PendingOrder>();
+		ArrayList<Order> orders =(ArrayList<Order>) OrderMapper.getOrdersByRestaurantId(restaurantid);
+		for(Order order:orders){
+			result.add(getOrder(order.getId()));
+		}
+		return result;
+	}
+	public List<PendingOrder> getOrdersByUserId(int userid){
+		ArrayList<PendingOrder> result = new ArrayList<PendingOrder>();
+		ArrayList<Order> orders =(ArrayList<Order>) OrderMapper.getOrdersByUserId(userid);
+		for(Order order:orders){
+			result.add(getOrder(order.getId()));
+		}
+		return result;
 	}
 
 }
