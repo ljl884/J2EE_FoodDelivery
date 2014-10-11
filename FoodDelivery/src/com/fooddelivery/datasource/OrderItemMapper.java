@@ -20,6 +20,14 @@ public class OrderItemMapper extends DataMapper{
 		return id;
 	}
 	
+	public static void insert(ArrayList<OrderItem> list){
+		init();
+		for(OrderItem item:list){
+			session.save(item);
+		}
+		close();
+	}
+	
 	public static OrderItem getOrderItem(int id){
 		init();
 		OrderItem result = (OrderItem) session.load(OrderItem.class, id);
