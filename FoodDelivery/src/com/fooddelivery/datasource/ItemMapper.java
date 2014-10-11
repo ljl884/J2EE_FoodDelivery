@@ -66,17 +66,16 @@ public class ItemMapper extends DataMapper{
 		{
 			Item item= (Item) l.get(i);
 			list.add(item);
-			System.out.println(item.getName()+" "+item.getMenuid());
-			
+			System.out.println(item.getName()+" "+item.getMenuid());			
 		}
 		close();
 		return list;
-		
 	}
 	
-	
-	
-
-	
-	
+	public static void update(Item item){
+		init();
+		session.save(item);
+		close();
+	}
+		
 }

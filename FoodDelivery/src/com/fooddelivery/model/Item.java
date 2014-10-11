@@ -13,6 +13,7 @@ public class Item {
 	private String catagory;//spelling
 	private String description;
 	private int menuid;
+	private int stock;
 	
 	public int getMenuid() {
 		return menuid;
@@ -62,4 +63,13 @@ public class Item {
 	public void setDescription(String description){
 		this.description=description;
 	}
+
+	public int getStock() {
+		return stock;
+	}
+
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+	
 }

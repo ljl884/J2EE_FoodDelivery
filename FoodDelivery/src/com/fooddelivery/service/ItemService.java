@@ -34,6 +34,32 @@ public class ItemService {
 		return ItemMapper.getItem(itemid);
 	}
 	
+	public boolean dropItemStock(int itemid, int amount){
+		Item item = ItemMapper.getItem(itemid);
+		if (item==null) {
+			return false;
+		}
+		else {
+			if (item.getStock()<amount) {
+				return false;
+			}
+			else {
+				item.setStock(item.getStock()-amount);
+				return true;
+			}
+		}
+		
+	}
+	
+	public void addItemStock(int itemid,int amount){
+		Item item = ItemMapper.getItem(itemid);
+		if(item==null){
+			return;
+		}
+		else {
+			item.setStock(item.getStock()+amount);
+		}
+	}
 	
 	
 }
