@@ -36,7 +36,7 @@ int id=restaurant.getId();
 <a href="ItemController?type=view&id=<%=id %>">
 <%out.println(restaurant.getId());%>
 
-<% out.println(restaurant.getName());
+<%out.println(restaurant.getName());
 
 out.println(restaurant.getCategory());
 

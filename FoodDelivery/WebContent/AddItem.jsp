@@ -10,7 +10,7 @@
 <%@ page import="com.fooddelivery.model.*" %>
 <%@ page import="com.fooddelivery.service.*" %>
 <body>
-<form action=ItemController method="post">
+<form action=ItemController?method=add method="post" id="add">
 Name <input type="text" name=name><br>
 Category <input type="text" name=catagory><br>
 Price(input an integer) <input type="text" name=price><br>

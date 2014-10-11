@@ -13,11 +13,11 @@
 <%@ page import="java.util.*" %>
 <% 
 User user =(User)session.getAttribute("user");
-String name=(String)session.getAttribute("addname");
-String catagory=(String)session.getAttribute("addcatagory");
-int price=((Integer)session.getAttribute("addprice")).intValue();
-String description=(String)session.getAttribute("adddescription");
-int menu_id=((Integer)session.getAttribute("menu_id")).intValue();
+String name=(String)request.getSession().getAttribute("addname");
+String catagory=(String)request.getSession().getAttribute("addcatagory");
+int price=((Integer)request.getSession().getAttribute("addprice")).intValue();
+String description=(String)request.getSession().getAttribute("adddescription");
+int menu_id=((Integer)request.getSession().getAttribute("menu_id")).intValue();
 ItemService is = new ItemService();
 is.addItem(menu_id, name, catagory, price, description);
 %>

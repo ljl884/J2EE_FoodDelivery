@@ -1,6 +1,7 @@
 package com.fooddelivery.presentation;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fooddelivery.model.Item;
+import com.fooddelivery.model.OrderItem;
 import com.fooddelivery.model.Restaurant;
+import com.fooddelivery.model.User;
 import com.fooddelivery.service.ItemService;
 import com.fooddelivery.service.RestaurantService;
 
@@ -47,6 +50,7 @@ public class ItemController extends HttpServlet {
 		else{
 		List<Item> result=is.getItemByMenuId(new_id);
 		request.setAttribute("result", result); 
+		request.setAttribute("restaurantID", new_id);
 		getServletConfig().getServletContext().getRequestDispatcher("/ItemList.jsp").forward(request,response);
 		}
 		
@@ -60,12 +64,53 @@ public class ItemController extends HttpServlet {
 		// TODO Auto-generated method stub
 		//int menuid,String name,String catagory,int price,String description
 		String deleteidString = request.getParameter("delete_id");
-		if (deleteidString!=null) {
-			ItemService is=new ItemService();
-			is.deleteItem(Integer.parseInt(deleteidString));
+		String method=request.getParameter("method");
+		System.out.println(method+"hahahahahahahaha");
+		ItemService is=new ItemService();
+//		if (deleteidString!=null) {
+//			ItemService is=new ItemService();
+//			is.deleteItem(Integer.parseInt(deleteidString));
+//			
+//			getServletConfig().getServletContext().getRequestDispatcher("/DeleteItemSuccess.jsp").forward(request,response);
+//		
+//		}
+		if(method.equals("buy")){
+			//int new_id=((Integer)session.getAttribute("res_id")).intValue();
+			//String itemid =request.getParameter("res_id1");
+			String res_id =(String) request.getParameter("restaurantid");			
+			String user_id = (String) request.getParameter("userid");
 			
-			getServletConfig().getServletContext().getRequestDispatcher("/DeleteItemSuccess.jsp").forward(request,response);
-		
+			int userId=Integer.parseInt(user_id);
+			User user=(User)request.getSession().getAttribute("user");
+			String User=user.getUsername();
+			
+			System.out.println("itemid:"+res_id+User);
+			int new_id=Integer.parseInt(res_id);
+			//System.out.println(new_id+"hahahahahahahahahahhahahahahahahahahahahahahahah");
+			for(Item item:is.getItemByMenuId(new_id)){
+			//System.out.println("haha");
+				System.out.println(item.getId());
+				String value=request.getParameter(""+item.getId());
+				System.out.println(value);
+			}
+			ItemService itemService=new ItemService();
+			List<Item> itemlist=itemService.getItemByMenuId(Integer.parseInt(res_id));
+			ArrayList<OrderItem> orderItems = new ArrayList<OrderItem>();
+			
+			for(Item item : itemlist){
+				OrderItem orderItem = new OrderItem();
+				orderItem.setItemid(item.getId());
+				String value=request.getParameter(""+item.getId());
+				if (value.equals("0")) {
+					continue;
+				}
+				orderItem.setCount(Integer.parseInt(value));
+				orderItems.add(orderItem);
+			}
+			request.setAttribute("orderItems", orderItems); 
+			getServletConfig().getServletContext().getRequestDispatcher("/GenerateOrder.jsp").forward(request,response);
+	
+			
 		}
 		else{
 		String name=request.getParameter("name");
@@ -77,6 +122,7 @@ public class ItemController extends HttpServlet {
 		request.getSession().setAttribute("addcatagory",catagory );
 		request.getSession().setAttribute("addprice",new_price );
 		request.getSession().setAttribute("adddescription",description );
+
 		getServletConfig().getServletContext().getRequestDispatcher("/AddItemSuccess.jsp").forward(request,response);}
 	}
 

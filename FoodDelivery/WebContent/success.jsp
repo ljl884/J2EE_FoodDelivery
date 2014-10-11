@@ -20,11 +20,12 @@ else %>
 <h4><a href="ItemController?type=view&id=<%=user.getRestaurantid()%>">My restaurant</a></h4>
 <h4><a href="Search.jsp">Go To Search Page</a></h4>
 
+
 <% }
 else {%>
 
 <h4><a href="Search.jsp">Go To Search Page</a></h4><%} %>
-
+<h4><a href="ViewOrder.jsp">View My Order</a></h4>
 
 </body>
 </html>

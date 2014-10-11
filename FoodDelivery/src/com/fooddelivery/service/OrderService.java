@@ -25,6 +25,7 @@ public class OrderService {
 	public int createOrder(int restaurantId,int userid, ArrayList<OrderItem> orderItems, CustomerInfo customerInfo, PaymentMethod paymentMethod, DeliverAddress deliverAddress){
 		Order order = new Order();
 		order.setRestaurantid(restaurantId);
+		order.setUserid(userid);
 		order.setStatus("new");		
 		int id = OrderMapper.insert(order);
 		customerInfo.setOrderid(id);
