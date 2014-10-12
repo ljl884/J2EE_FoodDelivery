@@ -28,6 +28,9 @@ public class OrderService {
 		order.setUserid(userid);
 		order.setStatus("new");		
 		int id = OrderMapper.insert(order);
+		for(OrderItem orderItem:orderItems){
+			orderItem.setOrderid(id);
+		}
 		OrderItemMapper.insert(orderItems);		
 		customerInfo.setOrderid(id);
 		CustomerInfoMapper.insert(customerInfo);

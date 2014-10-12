@@ -80,9 +80,10 @@ public class OrderController extends HttpServlet {
 			list = (ArrayList<OrderItem>)request.getSession().getAttribute("OrderItem");
 		}
 		ArrayList<OrderItem> orderItems = new ArrayList<OrderItem>();
-		OrderItem item = new OrderItem();
+		
 		
 		for(OrderItem orderitem:list) {
+			OrderItem item = new OrderItem();
 			item.setItemid(orderitem.getItemid());
 			item.setCount(orderitem.getCount());
 			orderItems.add(item);
@@ -104,7 +105,7 @@ public class OrderController extends HttpServlet {
 		PaymentMethod paymentMethod = new PaymentMethod();
 		paymentMethod.setName(payment);
 
-		PendingOrder pendingOrder=new PendingOrder(order1, orderItems, customerInfo, deliverAddress, paymentMethod);
+		PendingOrder pendingOrder=new PendingOrder(order1, list, customerInfo, deliverAddress, paymentMethod);
 		OrderService orderService=new OrderService();
 		orderService.createOrder(pendingOrder);
 		response.sendRedirect("ViewOrder.jsp");
