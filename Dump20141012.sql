@@ -29,7 +29,7 @@ CREATE TABLE `customerinfo` (
   `name` varchar(45) DEFAULT NULL,
   `orderid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `customerinfo` (
 
 LOCK TABLES `customerinfo` WRITE;
 /*!40000 ALTER TABLE `customerinfo` DISABLE KEYS */;
-INSERT INTO `customerinfo` VALUES (1,'wentao',1),(2,'shady',2),(3,'xi',3),(4,'johan',4),(5,'wenxin',5),(6,'wentao',3),(7,'wentao',4);
+INSERT INTO `customerinfo` VALUES (1,'test',1),(2,'Wentao ',2);
 /*!40000 ALTER TABLE `customerinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +63,7 @@ CREATE TABLE `deliveraddress` (
 
 LOCK TABLES `deliveraddress` WRITE;
 /*!40000 ALTER TABLE `deliveraddress` DISABLE KEYS */;
-INSERT INTO `deliveraddress` VALUES (1,1,'1a'),(2,2,'2a'),(3,3,'3a'),(4,4,'4a'),(5,5,'5a'),(6,3,'1a'),(7,4,'1a');
+INSERT INTO `deliveraddress` VALUES (1,1,'11111'),(2,2,'melb');
 /*!40000 ALTER TABLE `deliveraddress` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,8 +81,9 @@ CREATE TABLE `item` (
   `price` int(11) DEFAULT NULL,
   `description` text,
   `menuid` int(11) NOT NULL DEFAULT '1',
+  `stock` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,7 +92,7 @@ CREATE TABLE `item` (
 
 LOCK TABLES `item` WRITE;
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
-INSERT INTO `item` VALUES (1,'afdfaf','dafa',33,'fadfadfasdf',2),(2,'e2r2g','fff',22,'adfasdf',3),(3,'4342','fff',33,'efgbb',2),(4,'adfa','132',122,'asdfasdf',4),(6,'Lamen','noodle',12,'Description for Lamen',8),(7,'adfa','drink',12,'asdfasdf',8),(8,'adfa','drink',12,'asdfasdf',8),(9,'FoodDelivery','132',5,'asdfasdf',8),(10,'Green Tea','tea',6,'best tea!',1),(11,'Rice noodle','noodle',12,'noooodle',1);
+INSERT INTO `item` VALUES (1,'afdfaf','dafa',33,'fadfadfasdf',2,0),(2,'e2r2g','fff',22,'adfasdf',3,0),(3,'4342','fff',33,'efgbb',2,0),(4,'adfa','132',122,'asdfasdf',4,0),(6,'Lamen','noodle',12,'Description for Lamen',8,0),(7,'adfa','drink',12,'asdfasdf',8,0),(8,'adfa','drink',12,'asdfasdf',8,0),(9,'FoodDelivery','132',5,'asdfasdf',8,0),(10,'Green Tea','tea',6,'best tea!',1,0),(11,'Rice noodle','noodle',12,'noooodle',1,0);
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,7 +117,7 @@ CREATE TABLE `menu` (
 
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` VALUES (1,'menu1_1',1),(2,'menu2_1',1),(3,'menu3_2',2),(4,'menu4_3',3);
+INSERT INTO `menu` VALUES (1,'menu1_1',1),(2,'menu2_1',2),(3,'menu3_2',3),(4,'menu4_3',4);
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,7 +133,7 @@ CREATE TABLE `menuitem` (
   `menuid` int(11) NOT NULL,
   `itemid` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,7 +142,7 @@ CREATE TABLE `menuitem` (
 
 LOCK TABLES `menuitem` WRITE;
 /*!40000 ALTER TABLE `menuitem` DISABLE KEYS */;
-INSERT INTO `menuitem` VALUES (1,1,2),(2,1,3),(3,1,8),(4,1,9),(5,1,10),(6,4,9),(7,4,10),(8,1,10),(9,1,10),(10,1,11),(11,1,11),(12,1,11),(13,1,11),(14,1,11),(15,1,10),(16,1,11),(17,1,12),(18,1,12),(19,10,13),(20,8,14),(21,8,15),(22,8,16),(23,8,17),(24,1,18),(25,1,18),(26,1,18),(27,1,19),(28,1,19),(29,1,12),(30,1,13),(31,1,14),(32,1,10),(33,1,11),(34,1,12),(35,1,10),(36,1,11),(37,1,12),(38,1,12);
+INSERT INTO `menuitem` VALUES (1,1,2),(2,1,3),(3,1,8),(4,1,9),(5,1,10),(6,4,9),(7,4,10),(8,1,10),(9,1,10),(10,1,11),(11,1,11),(12,1,11),(13,1,11),(14,1,11),(15,1,10),(16,1,11),(17,1,12),(18,1,12),(19,10,13),(20,8,14),(21,8,15),(22,8,16),(23,8,17),(24,1,18),(25,1,18),(26,1,18),(27,1,19),(28,1,19),(29,1,12),(30,1,13),(31,1,14),(32,1,10),(33,1,11),(34,1,12),(35,1,10),(36,1,11),(37,1,12),(38,1,12),(39,1,12),(40,1,12);
 /*!40000 ALTER TABLE `menuitem` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -156,6 +157,7 @@ CREATE TABLE `orderitem` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `orderid` int(11) DEFAULT NULL,
   `itemid` int(11) DEFAULT NULL,
+  `count` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -166,7 +168,7 @@ CREATE TABLE `orderitem` (
 
 LOCK TABLES `orderitem` WRITE;
 /*!40000 ALTER TABLE `orderitem` DISABLE KEYS */;
-INSERT INTO `orderitem` VALUES (1,1,1),(2,1,2),(3,1,3),(4,1,4),(5,1,5),(6,2,1),(7,2,2),(8,2,3);
+INSERT INTO `orderitem` VALUES (1,0,11,2),(2,0,11,2);
 /*!40000 ALTER TABLE `orderitem` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -191,7 +193,7 @@ CREATE TABLE `paymentmethod` (
 
 LOCK TABLES `paymentmethod` WRITE;
 /*!40000 ALTER TABLE `paymentmethod` DISABLE KEYS */;
-INSERT INTO `paymentmethod` VALUES (1,'card',1),(2,'card',2),(3,'card',3),(4,'card',4);
+INSERT INTO `paymentmethod` VALUES (1,'cash',1),(2,'cash',2);
 /*!40000 ALTER TABLE `paymentmethod` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -206,8 +208,9 @@ CREATE TABLE `pendingorder` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `restaurantid` int(11) DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
+  `userid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -216,7 +219,7 @@ CREATE TABLE `pendingorder` (
 
 LOCK TABLES `pendingorder` WRITE;
 /*!40000 ALTER TABLE `pendingorder` DISABLE KEYS */;
-INSERT INTO `pendingorder` VALUES (1,1,'new'),(2,1,'new'),(3,1,'new'),(4,1,'new');
+INSERT INTO `pendingorder` VALUES (1,1,'new',15),(2,1,'new',15);
 /*!40000 ALTER TABLE `pendingorder` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -282,4 +285,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-07 17:29:15
+-- Dump completed on 2014-10-12 17:20:11
