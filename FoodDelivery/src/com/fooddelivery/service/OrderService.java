@@ -39,7 +39,7 @@ public class OrderService {
 	}
 	
 	public void deleteOrder(int id){
-		
+		OrderMapper.delete(id);
 	}
 	
 	public PendingOrder getOrder(int id){
@@ -66,6 +66,7 @@ public class OrderService {
 		if (order!=null) {
 			order.setStatus("confirmed");
 		}
+		OrderMapper.update(order);
 		
 	}
 	

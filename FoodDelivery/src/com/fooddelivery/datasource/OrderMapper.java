@@ -84,4 +84,11 @@ public class OrderMapper extends DataMapper {
 		return list;
 		
 	}
+
+	public static void update(Order order) {
+		init();
+		session.update(order);
+		close();
+		
+	}
 }

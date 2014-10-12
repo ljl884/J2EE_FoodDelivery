@@ -17,6 +17,10 @@ public class ItemService {
 		int itemid=ItemMapper.insert( name, catagory, price, description,menuid);
 		MenuItemMapper.insert(menuid, itemid);
 	}
+	public void addItem(int menuid,String name,String catagory,int price,String description,int stock){
+		int itemid=ItemMapper.insert( name, catagory, price, description,menuid,stock);
+		MenuItemMapper.insert(menuid, itemid);
+	}
 	
 	public void updateItemPrice(int id,int price){
 		ItemMapper.updatePrice(id, price);
@@ -58,6 +62,17 @@ public class ItemService {
 		}
 		else {
 			item.setStock(item.getStock()+amount);
+		}
+	}
+	
+	public void updateStock(int itemid,int amount){
+		Item item = ItemMapper.getItem(itemid);
+		if (item==null || amount<0) {
+			return;	
+		}
+		else {
+			item.setStock(amount);
+			ItemMapper.update(item);
 		}
 	}
 	

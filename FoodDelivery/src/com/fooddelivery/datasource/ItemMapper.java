@@ -74,8 +74,24 @@ public class ItemMapper extends DataMapper{
 	
 	public static void update(Item item){
 		init();
-		session.save(item);
+		session.update(item);
 		close();
+	}
+	public static int insert(String name, String catagory, int price,
+			String description, int menuid, int stock) {
+		init();
+		Item item = new Item();
+		item.setName(name);
+		item.setCatagory(catagory);
+		item.setDescription(description);
+		item.setPrice(price);
+		item.setMenuid(menuid);
+		item.setStock(stock);
+
+		session.save(item);
+		int itemid=item.getId();
+		close();
+		return itemid;
 	}
 		
 }
