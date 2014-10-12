@@ -38,12 +38,8 @@ public class LoginController extends HttpServlet {
 		// TODO Auto-generated method stub
 		UserService userService = new UserService();
 		User result = userService.authenticate(request.getParameter("username"),request.getParameter("password"));
-		
-		//System.out.println(result);
-		
-		
+	
 		 if (result!=null) {
-			 //User user = loginService.getUserDetails(request.getParameter("password"));
 			 request.getSession().setAttribute("user", result);
 
 		 response.sendRedirect("success.jsp");

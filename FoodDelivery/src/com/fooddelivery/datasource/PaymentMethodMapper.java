@@ -34,7 +34,6 @@ public class PaymentMethodMapper extends DataMapper{
 		}
 		else{
 			PaymentMethod paymentMethod = (PaymentMethod)query.list().get(0);
-			System.out.println(paymentMethod.getName());
 			return paymentMethod;
 		}
 	}

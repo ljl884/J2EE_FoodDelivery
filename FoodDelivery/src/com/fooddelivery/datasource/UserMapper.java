@@ -16,7 +16,6 @@ public class UserMapper extends DataMapper{
 		for(int i=0;i<l.size();i++)
 		{
 			User user = (User) l.get(i);
-			System.out.println(user.getUsername()+" "+user.getPassword());
 		}
 		close();
 	}

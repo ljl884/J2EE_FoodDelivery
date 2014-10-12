@@ -51,11 +51,12 @@ public class OrderController extends HttpServlet {
 			getServletConfig().getServletContext().getRequestDispatcher("/DeleteOrderSuccess.jsp").forward(request,response);
 
 		}
+		else if(typeString.equals("confirm")){
+			os.confirmOrder(Integer.parseInt(search_id));
+			getServletConfig().getServletContext().getRequestDispatcher("/ViewOrder.jsp").forward(request,response);
+		}
 		else{
-//			List<Item> result=is.getItemByMenuId(new_id);
-//			request.setAttribute("result", result); 
-//			request.setAttribute("restaurantID", new_id);
-//			getServletConfig().getServletContext().getRequestDispatcher("/ItemList.jsp").forward(request,response);
+			getServletConfig().getServletContext().getRequestDispatcher("/ViewOrder.jsp").forward(request,response);
 		}
 	}
 
@@ -70,12 +71,10 @@ public class OrderController extends HttpServlet {
 
 		String res_id =(String) request.getSession().getAttribute("res_id");
 		String user_id =(String) request.getSession().getAttribute("user_id");
-		//int userId=Integer.parseInt(user_id);
 		Order order1  = new Order();
 		order1.setRestaurantid(Integer.parseInt(res_id));
 		order1.setUserid(Integer.parseInt(user_id));
 		ArrayList<OrderItem> list=new ArrayList<OrderItem>();
-		ItemService is=new ItemService();
 		if(request.getSession().getAttribute("OrderItem")!=null){
 			list = (ArrayList<OrderItem>)request.getSession().getAttribute("OrderItem");
 		}
@@ -88,14 +87,7 @@ public class OrderController extends HttpServlet {
 			item.setCount(orderitem.getCount());
 			orderItems.add(item);
 		}
-		
-		
-//      out.println(orderitem.getId());
-//		System.err.println(orderitem.getItemid());
-		
-//		System.err.println(is.getItemById(orderitem.getItemid()).getName());
-		
-//		System.err.println(orderitem.getCount());		
+				
 		CustomerInfo customerInfo = new CustomerInfo();
 		customerInfo.setName(customer_Info);
 		
@@ -109,9 +101,6 @@ public class OrderController extends HttpServlet {
 		OrderService orderService=new OrderService();
 		orderService.createOrder(pendingOrder);
 		response.sendRedirect("ViewOrder.jsp");
-//		System.out.println(customer_Info);
-//		System.out.println(payment);
-//		System.out.println(delivery_Address);
 	}
 
 }
