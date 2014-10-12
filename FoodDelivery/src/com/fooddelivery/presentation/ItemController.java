@@ -41,6 +41,9 @@ public class ItemController extends HttpServlet {
 		request.getSession().setAttribute("menu_id", new_id);
 		ItemService is=new ItemService();
 		String typeString = request.getParameter("type");
+		if (typeString==null) {
+			typeString="null";
+		}
 		if(typeString.equals("delete")){
 	
 			is.deleteItem(new_id);
@@ -65,6 +68,12 @@ public class ItemController extends HttpServlet {
 		//int menuid,String name,String catagory,int price,String description
 		String deleteidString = request.getParameter("delete_id");
 		String method=request.getParameter("method");
+		if(method==null){
+			method="normal";
+		}
+		if (method==deleteidString) {
+			deleteidString="null";
+		}
 		System.out.println(method+"hahahahahahahaha");
 		ItemService is=new ItemService();
 //		if (deleteidString!=null) {
@@ -101,7 +110,7 @@ public class ItemController extends HttpServlet {
 				OrderItem orderItem = new OrderItem();
 				orderItem.setItemid(item.getId());
 				String value=request.getParameter(""+item.getId());
-				if (value.equals("0")) {
+				if (value==null || value.equals("0")) {
 					continue;
 				}
 				orderItem.setCount(Integer.parseInt(value));
