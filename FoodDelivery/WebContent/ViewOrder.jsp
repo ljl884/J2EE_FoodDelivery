@@ -49,7 +49,7 @@ if(isOwner){
 		out.println("Customer Name:"+pendingorder.getCustomerInfo().getName());
 		out.println("Delivery Address:"+pendingorder.getDeliverAddress().getAddress());
 		out.println("Payment Method:"+pendingorder.getPaymentMethod().getName());%><br>
-		
+	     <a href="OrderController?type=confirm&id=<%=pendingorder.getId()%>">confirm</a>
 		&nbsp;&nbsp;
 		<%
 		
@@ -62,25 +62,25 @@ if(isOwner){
 	}
 else{
 	List<PendingOrder> list=orderService.getOrdersByUserId(user.getId());
-	for(PendingOrder pendingorder:list){%>
-	
-	<%
+	for(PendingOrder pendingorder:list){
     out.println("ID"+pendingorder.getId()+":");
     %><br>
-    
-    &nbsp;&nbsp;
+
     <%
 		
 	    
-		out.println("Restaurant ID:"+pendingorder.getOrder().getRestaurantid());
-		out.println("Status:"+pendingorder.getOrder().getStatus());
-		out.println("Customer Name:"+pendingorder.getCustomerInfo().getName());
-		out.println("Delivery Address:"+pendingorder.getDeliverAddress().getAddress());
-		out.println("Payment Method:"+pendingorder.getPaymentMethod().getName());
+		out.println("Restaurant ID:"+pendingorder.getOrder().getRestaurantid()+"   ");
+		out.println("Status:"+pendingorder.getOrder().getStatus()+"   ");
+		out.println("Customer Name:"+pendingorder.getCustomerInfo().getName()+"   ");
+		out.println("Delivery Address:"+pendingorder.getDeliverAddress().getAddress()+"   ");
+		out.println("Payment Method:"+pendingorder.getPaymentMethod().getName()+"   ");
 		%><br>
-		<% if(isOwner){ %><a  href="OrderController?type=delete&id=<%=pendingorder.getId()%>">delete</a><%} %>
-		&nbsp;&nbsp;
 		<%
+		
+		if (!orderService.isOrderConfirmed(pendingorder.getId())){ %>
+		<a  href="OrderController?type=delete&id=<%=pendingorder.getId()%>">delete</a>
+		&nbsp;&nbsp;
+		<%}
 		
 		List<OrderItem> Itemlist=pendingorder.getOrderItems();
 		for(OrderItem orderitem:Itemlist){
