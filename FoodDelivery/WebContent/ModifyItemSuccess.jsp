@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Modify Success</title>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -13,7 +13,8 @@
 <% 
 User user =(User)session.getAttribute("user");
 %>
-AddItem Success
+Modify Success
 <a href="ItemController?type=view&id=<%=user.getRestaurantid()%>">back</a>
+
 </body>
 </html>

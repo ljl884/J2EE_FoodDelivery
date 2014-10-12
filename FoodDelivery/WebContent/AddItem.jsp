@@ -11,10 +11,11 @@
 <%@ page import="com.fooddelivery.service.*" %>
 <body>
 <form action=ItemController?method=add method="post" id="add">
-Name <input type="text" name=name><br>
-Category <input type="text" name=catagory><br>
-Price(input an integer) <input type="text" name=price><br>
-Description <input type="text" name=description><br>
+Name <input type="text" name=name value="null"><br>
+Category <input type="text" name=catagory value="null"><br>
+Price(input an integer) <input type="text" name=price value="0"><br>
+Description <input type="text" name=description value="null"><br>
+Stock(input an integer) <input type="text" name=stock value="0"><br>
 <input type="submit" value=add>
 </form>
 </body>

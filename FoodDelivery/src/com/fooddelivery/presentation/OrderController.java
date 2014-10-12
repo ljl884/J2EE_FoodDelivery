@@ -2,14 +2,17 @@ package com.fooddelivery.presentation;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import com.fooddelivery.model.CustomerInfo;
 import com.fooddelivery.model.DeliverAddress;
+import com.fooddelivery.model.Item;
 import com.fooddelivery.model.Order;
 import com.fooddelivery.model.OrderItem;
 import com.fooddelivery.model.PaymentMethod;
@@ -36,6 +39,24 @@ public class OrderController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String search_id=request.getParameter("id");
+		String typeString = request.getParameter("type");
+		OrderService os=new OrderService();
+		if (typeString==null) {
+			typeString="null";
+		}
+		if(typeString.equals("delete")){
+	
+			os.deleteOrder(Integer.parseInt(search_id));
+			getServletConfig().getServletContext().getRequestDispatcher("/DeleteOrderSuccess.jsp").forward(request,response);
+
+		}
+		else{
+//			List<Item> result=is.getItemByMenuId(new_id);
+//			request.setAttribute("result", result); 
+//			request.setAttribute("restaurantID", new_id);
+//			getServletConfig().getServletContext().getRequestDispatcher("/ItemList.jsp").forward(request,response);
+		}
 	}
 
 	/**

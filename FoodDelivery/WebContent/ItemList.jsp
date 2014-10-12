@@ -31,7 +31,7 @@ else {
 	}
 %>
 <h3>Searching Results</h3>
-<p>Id&nbsp;&nbsp;Name&nbsp;&nbsp;Category&nbsp;&nbsp;Price&nbsp;&nbsp;Description </p>
+<p>Id&nbsp;&nbsp;Name&nbsp;&nbsp;Category&nbsp;&nbsp;Price&nbsp;&nbsp;Description&nbsp;&nbsp;Stock </p>
 <%
 session.setAttribute("res_id","1");
 session.setAttribute("user_id",""+user.getId());
@@ -55,12 +55,17 @@ out.println(item.getCatagory());
 
 out.println(item.getPrice());
 out.println(item.getDescription());
-
+out.println(item.getStock());
 %>
 
-<% if(isOwner){ %><a  href="ItemController?type=delete&id=<%=item.getId()%>">delete</a><br>
+<% if(isOwner){ %><a  href="ItemController?type=delete&id=<%=item.getId()%>">delete</a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+<%} if(isOwner){ %><a  href="ModifyItem.jsp?id=<%=item.getId()%>">modify</a><br>
+
+
+
 <%}
-else if(!isOwner){ %>
+else if(user_restaurant==0){ %>
 <input type="text" name=<%=item.getId()%> value=0><br>
 
 
@@ -74,7 +79,7 @@ else{%><br>
 }
 %>
 <%
-if(!isOwner){ %>
+if(user_restaurant==0){ %>
 <input type="submit" value=buy>
 <%}
 

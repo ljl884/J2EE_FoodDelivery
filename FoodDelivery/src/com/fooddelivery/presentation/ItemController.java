@@ -121,16 +121,33 @@ public class ItemController extends HttpServlet {
 	
 			
 		}
+		else if(method.equals("mod")){
+			int mod_id=((Integer)request.getSession().getAttribute("mod_id")).intValue();
+			System.err.println("mod_id:"+mod_id);
+			//String name=request.getParameter("name");
+			//String catagory=request.getParameter("catagory");
+			String price=request.getParameter("price");
+			int new_price=Integer.parseInt(price);
+			String stock=request.getParameter("stock");
+			is.updateItemPrice(mod_id, new_price);
+			System.err.println("Stock!!!!!!!!!!!"+stock);
+			is.updateStock(mod_id, Integer.parseInt(stock));
+			getServletConfig().getServletContext().getRequestDispatcher("/ModifyItemSuccess.jsp").forward(request,response);
+			//System.out.println("new_id:"+Integer.parseInt(mod_id));
+		}
 		else{
 		String name=request.getParameter("name");
 		String catagory=request.getParameter("catagory");
 		String price=request.getParameter("price");
 		int new_price=Integer.parseInt(price);
 		String description=request.getParameter("description");
-		request.getSession().setAttribute("addname",name );
-		request.getSession().setAttribute("addcatagory",catagory );
-		request.getSession().setAttribute("addprice",new_price );
-		request.getSession().setAttribute("adddescription",description );
+		String stock=request.getParameter("stock");
+//		request.getSession().setAttribute("addname",name );
+//		request.getSession().setAttribute("addcatagory",catagory );
+//		request.getSession().setAttribute("addprice",new_price );
+//		request.getSession().setAttribute("adddescription",description );
+		int menu_id=((Integer)request.getSession().getAttribute("menu_id")).intValue();
+		is.addItem(menu_id, name, catagory, new_price, description,Integer.parseInt(stock));
 
 		getServletConfig().getServletContext().getRequestDispatcher("/AddItemSuccess.jsp").forward(request,response);}
 	}

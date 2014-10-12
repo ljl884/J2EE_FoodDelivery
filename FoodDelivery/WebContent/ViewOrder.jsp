@@ -41,7 +41,6 @@ if(isOwner){
     out.println("ID"+pendingorder.getId()+":");
     %><br>
     
-    &nbsp;&nbsp;
     <%
 		
 	    
@@ -66,8 +65,6 @@ else{
 	for(PendingOrder pendingorder:list){%>
 	
 	<%
-
-    
     out.println("ID"+pendingorder.getId()+":");
     %><br>
     
@@ -81,7 +78,7 @@ else{
 		out.println("Delivery Address:"+pendingorder.getDeliverAddress().getAddress());
 		out.println("Payment Method:"+pendingorder.getPaymentMethod().getName());
 		%><br>
-		
+		<% if(isOwner){ %><a  href="OrderController?type=delete&id=<%=pendingorder.getId()%>">delete</a><%} %>
 		&nbsp;&nbsp;
 		<%
 		
