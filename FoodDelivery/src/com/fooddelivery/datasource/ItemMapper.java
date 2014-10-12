@@ -65,8 +65,7 @@ public class ItemMapper extends DataMapper{
 		for(int i=0;i<l.size();i++)
 		{
 			Item item= (Item) l.get(i);
-			list.add(item);
-			System.out.println(item.getName()+" "+item.getMenuid());			
+			list.add(item);			
 		}
 		close();
 		return list;

@@ -49,9 +49,12 @@ if(isOwner){
 		out.println("Customer Name:"+pendingorder.getCustomerInfo().getName());
 		out.println("Delivery Address:"+pendingorder.getDeliverAddress().getAddress());
 		out.println("Payment Method:"+pendingorder.getPaymentMethod().getName());%><br>
-	     <a href="OrderController?type=confirm&id=<%=pendingorder.getId()%>">confirm</a>
-		&nbsp;&nbsp;
-		<%
+	    <%
+		
+		if (!orderService.isOrderConfirmed(pendingorder.getId())){ %>
+	     <a href="OrderController?type=confirm&id=<%=pendingorder.getId()%>">confirm</a><br>
+
+		<%}
 		
 		List<OrderItem> Itemlist=pendingorder.getOrderItems();
 		for(OrderItem orderitem:Itemlist){
@@ -78,8 +81,7 @@ else{
 		<%
 		
 		if (!orderService.isOrderConfirmed(pendingorder.getId())){ %>
-		<a  href="OrderController?type=delete&id=<%=pendingorder.getId()%>">delete</a>
-		&nbsp;&nbsp;
+		<a  href="OrderController?type=delete&id=<%=pendingorder.getId()%>">delete</a><br>
 		<%}
 		
 		List<OrderItem> Itemlist=pendingorder.getOrderItems();

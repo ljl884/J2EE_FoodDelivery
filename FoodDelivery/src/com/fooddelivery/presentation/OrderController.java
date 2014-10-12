@@ -56,9 +56,6 @@ public class OrderController extends HttpServlet {
 			getServletConfig().getServletContext().getRequestDispatcher("/ViewOrder.jsp").forward(request,response);
 		}
 		else{
-//			List<Item> result=is.getItemByMenuId(new_id);
-//			request.setAttribute("result", result); 
-//			request.setAttribute("restaurantID", new_id);
 			getServletConfig().getServletContext().getRequestDispatcher("/ViewOrder.jsp").forward(request,response);
 		}
 	}
@@ -74,12 +71,10 @@ public class OrderController extends HttpServlet {
 
 		String res_id =(String) request.getSession().getAttribute("res_id");
 		String user_id =(String) request.getSession().getAttribute("user_id");
-		//int userId=Integer.parseInt(user_id);
 		Order order1  = new Order();
 		order1.setRestaurantid(Integer.parseInt(res_id));
 		order1.setUserid(Integer.parseInt(user_id));
 		ArrayList<OrderItem> list=new ArrayList<OrderItem>();
-		ItemService is=new ItemService();
 		if(request.getSession().getAttribute("OrderItem")!=null){
 			list = (ArrayList<OrderItem>)request.getSession().getAttribute("OrderItem");
 		}

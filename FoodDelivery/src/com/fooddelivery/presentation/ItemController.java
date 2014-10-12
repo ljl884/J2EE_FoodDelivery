@@ -65,7 +65,6 @@ public class ItemController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//int menuid,String name,String catagory,int price,String description
 		String deleteidString = request.getParameter("delete_id");
 		String method=request.getParameter("method");
 		if(method==null){
@@ -76,16 +75,7 @@ public class ItemController extends HttpServlet {
 		}
 		System.out.println(method+"hahahahahahahaha");
 		ItemService is=new ItemService();
-//		if (deleteidString!=null) {
-//			ItemService is=new ItemService();
-//			is.deleteItem(Integer.parseInt(deleteidString));
-//			
-//			getServletConfig().getServletContext().getRequestDispatcher("/DeleteItemSuccess.jsp").forward(request,response);
-//		
-//		}
 		if(method.equals("buy")){
-			//int new_id=((Integer)session.getAttribute("res_id")).intValue();
-			//String itemid =request.getParameter("res_id1");
 			String res_id =(String) request.getParameter("restaurantid");			
 			String user_id = (String) request.getParameter("userid");
 			
@@ -93,15 +83,8 @@ public class ItemController extends HttpServlet {
 			User user=(User)request.getSession().getAttribute("user");
 			String User=user.getUsername();
 			
-			System.out.println("itemid:"+res_id+User);
 			int new_id=Integer.parseInt(res_id);
-			//System.out.println(new_id+"hahahahahahahahahahhahahahahahahahahahahahahahah");
-			for(Item item:is.getItemByMenuId(new_id)){
-			//System.out.println("haha");
-				System.out.println(item.getId());
-				String value=request.getParameter(""+item.getId());
-				System.out.println(value);
-			}
+			
 			ItemService itemService=new ItemService();
 			List<Item> itemlist=itemService.getItemByMenuId(Integer.parseInt(res_id));
 			ArrayList<OrderItem> orderItems = new ArrayList<OrderItem>();
@@ -123,17 +106,13 @@ public class ItemController extends HttpServlet {
 		}
 		else if(method.equals("mod")){
 			int mod_id=((Integer)request.getSession().getAttribute("mod_id")).intValue();
-			System.err.println("mod_id:"+mod_id);
-			//String name=request.getParameter("name");
-			//String catagory=request.getParameter("catagory");
+
 			String price=request.getParameter("price");
 			int new_price=Integer.parseInt(price);
 			String stock=request.getParameter("stock");
 			is.updateItemPrice(mod_id, new_price);
-			System.err.println("Stock!!!!!!!!!!!"+stock);
 			is.updateStock(mod_id, Integer.parseInt(stock));
 			getServletConfig().getServletContext().getRequestDispatcher("/ModifyItemSuccess.jsp").forward(request,response);
-			//System.out.println("new_id:"+Integer.parseInt(mod_id));
 		}
 		else{
 		String name=request.getParameter("name");
@@ -142,10 +121,6 @@ public class ItemController extends HttpServlet {
 		int new_price=Integer.parseInt(price);
 		String description=request.getParameter("description");
 		String stock=request.getParameter("stock");
-//		request.getSession().setAttribute("addname",name );
-//		request.getSession().setAttribute("addcatagory",catagory );
-//		request.getSession().setAttribute("addprice",new_price );
-//		request.getSession().setAttribute("adddescription",description );
 		int menu_id=((Integer)request.getSession().getAttribute("menu_id")).intValue();
 		is.addItem(menu_id, name, catagory, new_price, description,Integer.parseInt(stock));
 

@@ -31,7 +31,7 @@ else {
 	}
 %>
 <h3>Searching Results</h3>
-<p>Id&nbsp;&nbsp;Name&nbsp;&nbsp;Category&nbsp;&nbsp;Price&nbsp;&nbsp;Description&nbsp;&nbsp;Stock </p>
+<p>Id&nbsp;&nbsp;Name&nbsp;&nbsp;Category&nbsp;&nbsp;Price&nbsp;&nbsp;Description&nbsp;&nbsp;Stock&nbsp;&nbsp;How many you want buy </p>
 <%
 session.setAttribute("res_id","1");
 session.setAttribute("user_id",""+user.getId());

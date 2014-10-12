@@ -33,7 +33,7 @@ public class CustomerInfoMapper extends DataMapper{
 		}
 		else{
 			CustomerInfo customerInfo = (CustomerInfo)query.list().get(0);
-			System.out.println(customerInfo.getName());
+		
 			return customerInfo;
 		}
 		

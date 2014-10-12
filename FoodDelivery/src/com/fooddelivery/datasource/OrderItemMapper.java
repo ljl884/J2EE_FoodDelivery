@@ -45,7 +45,6 @@ public class OrderItemMapper extends DataMapper{
 		{
 			OrderItem item= (OrderItem) l.get(i);
 			list.add(item);
-			System.out.println("order item:"+item.getId()+" itemid: "+item.getItemid());
 			
 		}
 		close();

@@ -34,7 +34,6 @@ public class DeliverAddressMapper extends DataMapper{
 		}
 		else{
 			DeliverAddress deliverAddress = (DeliverAddress)query.list().get(0);
-			System.out.println(deliverAddress.getAddress());
 			return deliverAddress;
 		}
 		

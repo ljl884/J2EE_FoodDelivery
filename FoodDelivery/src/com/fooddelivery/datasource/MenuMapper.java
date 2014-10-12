@@ -30,7 +30,6 @@ public class MenuMapper extends DataMapper{
 		}
 		else{
 		Menu menu= (Menu) query.list().get(0);
-		System.out.println(menu.getName());
 		close();
 		return menu;}
 	}
@@ -51,7 +50,6 @@ public class MenuMapper extends DataMapper{
 			{
 				Menu menu= (Menu) l.get(i);
 				list.add(menu);
-				System.out.println(menu.getName());
 				
 			}
 		close();
