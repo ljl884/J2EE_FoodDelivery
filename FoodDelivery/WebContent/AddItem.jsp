@@ -10,13 +10,44 @@
 <%@ page import="com.fooddelivery.model.*" %>
 <%@ page import="com.fooddelivery.service.*" %>
 <body>
-<form action=ItemController?method=add method="post" id="add">
-Name <input type="text" name=name value="null"><br>
-Category <input type="text" name=catagory value="null"><br>
-Price(input an integer) <input type="text" name=price value="0"><br>
-Description <input type="text" name=description value="null"><br>
-Stock(input an integer) <input type="text" name=stock value="0"><br>
-<input type="submit" value=add>
+<form class="form-horizontal" action=ItemController?method=add method="post" id="add">
+<fieldset>
+<legend>AddItem</legend>
+<div class="formgroup">
+	<lable for="inputName" class="col-lg-2 control-label">Name</lable>
+	<div class="col-lg-10">
+	<input type="text" class="form-control" name=name  placeholder="Name" id="inputName">
+	</div>
+</div>
+<div class="formgroup">
+	<lable for="inputCategory" class="col-lg-2 control-label">Category</lable>
+	<div class="col-lg-10">
+	<input type="text" class="form-control" name=category  placeholder="category" id="inputCategory">
+	</div>
+</div>
+<div class="formgroup">
+	<lable for="inputPrice" class="col-lg-2 control-label">Price</lable>
+	<div class="col-lg-10">
+	<input type="text" class="form-control" name=price value="0" placeholder="0" id="inputPrice">
+	</div>
+</div>
+<div class="formgroup">
+	<lable for="inputDescription" class="col-lg-2 control-label">Description</lable>
+	<div class="col-lg-10">
+	<input type="text" class="form-control" name=description  placeholder="Description" id="inputDescription">
+	</div>
+</div>
+<div class="formgroup">
+	<lable for="inputStock" class="col-lg-2 control-label">Stock</lable>
+	<div class="col-lg-10">
+	<input type="text" class="form-control" name=stock value="0" placeholder="0" id="inputStock">
+	</div>
+</div>
+<input  class="btn btn-primary" type="submit" value=add>
+</fieldset>
+
+
+
 </form>
 </body>
 </html>

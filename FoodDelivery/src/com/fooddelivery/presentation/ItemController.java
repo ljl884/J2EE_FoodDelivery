@@ -73,7 +73,7 @@ public class ItemController extends HttpServlet {
 		if (method==deleteidString) {
 			deleteidString="null";
 		}
-		System.out.println(method+"hahahahahahahaha");
+		
 		ItemService is=new ItemService();
 		if(method.equals("buy")){
 			String res_id =(String) request.getParameter("restaurantid");			
@@ -116,7 +116,7 @@ public class ItemController extends HttpServlet {
 		}
 		else{
 		String name=request.getParameter("name");
-		String catagory=request.getParameter("catagory");
+		String catagory=request.getParameter("category");
 		String price=request.getParameter("price");
 		int new_price=Integer.parseInt(price);
 		String description=request.getParameter("description");

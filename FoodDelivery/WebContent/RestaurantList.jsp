@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>RestaurantList</title>
 </head>
 <body> 
 <%@ page import="com.fooddelivery.model.*" %> 
@@ -26,28 +26,38 @@ if(request.getAttribute("cat_result")!=null){
 %>
 <jsp:include page="header.jsp"/>
 <h3>Searching Results</h3>
-<p>Restaurant_Id &nbsp;&nbsp;  Restaurant_Name  &nbsp;&nbsp; Restaurant_Category &nbsp;&nbsp;  Restaurant_Location  &nbsp;&nbsp; Restaurant_AveragePrice</p>
-<%
-for(Restaurant restaurant:list) {
-int id=restaurant.getId();
 
-%>
 
-<a href="ItemController?type=view&id=<%=id %>">
-<%out.println(restaurant.getId());%>
+<div class="col-lg-12">
+<div class="bs-component">
+<table class="table table-striped table-hover">
+<thead>
+<tr>
+<th>#</th>
+<th>Name</th>
+<th>Category</th>
+<th>Location</th>
+<th>Average Price</th>
+</tr>
+</thead>
+<tbody>
+	<%for(Restaurant restaurant:list) {%>
+	<tr>
+		<td><%=restaurant.getId() %></td>
+		<td><a href="ItemController?type=view&id=<%=restaurant.getId() %>"><%=restaurant.getName() %></td>
+		<td><%=restaurant.getCategory() %></td>
+		<td><%=restaurant.getLocation()%></td>
+		<td><%=restaurant.getAverageprice()%></td>
+		
+		
+		
+	</tr>
+	<%} %>
+</tbody>
+</table>
+</div>
+</div>
 
-<%out.println(restaurant.getName());
-
-out.println(restaurant.getCategory());
-
-out.println(restaurant.getLocation());
-out.println(restaurant.getAverageprice());
-%>
-</a>
-<br>
-<%
-}
-%>
 
 </body>
 </html>

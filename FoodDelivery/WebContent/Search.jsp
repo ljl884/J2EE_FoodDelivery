@@ -13,10 +13,10 @@
 <form action="RestaurantController" method="post">
 <input type="text" name=keywords ><br/>
 <br>
-<input type="submit" name="search_price" value="search by price">
-<input type="submit" name="search_category" value="search by category">
-<input type="submit" name="search_location" value="search by location">
-<input type="submit" name="search_name" value="search by name">
+<input type="submit" class="btn btn-default" name="search_price" value="search by price">
+<input type="submit" class="btn btn-default" name="search_category" value="search by category">
+<input type="submit" class="btn btn-default" name="search_location" value="search by location">
+<input type="submit" class="btn btn-default" name="search_name" value="search by name">
 </form>
 
 </body>

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Item List</title>
 </head>
 <body>
 <%@ page import="com.fooddelivery.model.*" %> 
@@ -31,13 +31,13 @@ else {
 	}
 %>
 <h3>Searching Results</h3>
-<p>Id&nbsp;&nbsp;Name&nbsp;&nbsp;Category&nbsp;&nbsp;Price&nbsp;&nbsp;Description&nbsp;&nbsp;Stock&nbsp;&nbsp;How many you want buy </p>
+
 <%
 session.setAttribute("res_id","1");
 session.setAttribute("user_id",""+user.getId());
 //request.setAttribute("res_id",1);
  %>
-<form action="ItemController?method=buy" method="post" id="buy">
+<form class="form-horizontal" action="ItemController?method=buy" method="post" id="buy">
 
 
 <%
@@ -48,50 +48,60 @@ if(list.get(0)!=null){
 	restaurantid = rs.getRestaurantIdByItemId(list.get(0).getId());
 }
 %>
+<div class="col-lg-12">
+<div class="bs-component">
+<table class="table table-striped table-hover">
+<thead>
+<tr>
+<th>#</th>
+<th>Name</th>
+<th>Category</th>
+<th>Price</th>
+<th>Description</th>
+<th>Stock</th>
+<th>Operation</th>
+</tr>
+</thead>
+<tbody>
+	<%for(Item item:list) {%>
+	<tr>
+		<td><%=item.getId() %></td>
+		<td><%=item.getName() %></td>
+		<td><%=item.getCatagory() %></td>
+		<td><%=item.getPrice() %></td>
+		<td><%=item.getDescription() %></td>
+		<td><%=item.getStock() %></td>
+		<%if(isOwner){ %>
+		<td>
+			<a  class="btn btn-primary" href="ModifyItem.jsp?id=<%=item.getId()%>">UPDATE</a>
+			<a  class="btn btn-danger" href="ItemController?type=delete&id=<%=item.getId()%>">DELETE</a>
+			
+		</td>
+		<%}else if(user_restaurant==0) {%>
+		<td><div class="form-group has-success">
+		
+		<input class="form-control col-lg-1" id="inputSuccess" type="text" name=<%=item.getId()%> value=0>
+		</div><td>
+		<%} %>
+	</tr>
+	<%} %>
+</tbody>
+</table>
+</div>
+</div>
 <input type="hidden" name="userid" value=<%=user.getId() %>>
 <input type="hidden" name="restaurantid" value=<%=restaurantid%>>
-<% for(Item item:list) {
-out.println(item.getId());
 
-out.println(item.getName());
-
-out.println(item.getCatagory());
-
-out.println(item.getPrice());
-out.println(item.getDescription());
-out.println(item.getStock());
-%>
-
-<% if(isOwner){ %><a  href="ItemController?type=delete&id=<%=item.getId()%>">delete</a>&nbsp;&nbsp;&nbsp;&nbsp;
-
-<%} if(isOwner){ %><a  href="ModifyItem.jsp?id=<%=item.getId()%>">modify</a><br>
-
-
-
-<%}
-else if(user_restaurant==0){ %>
-<input type="text" name=<%=item.getId()%> value=0><br>
-
-
-	
-<%
-}
-else{%><br>
-<%
-
-}
-}
-%>
 <%
 if(user_restaurant==0){ %>
-<input type="submit" value=buy>
+<input class="btn btn-success" type="submit" value=buy>
 <%}
 
 %>
 </form>
 
 <% if(isOwner){ %>
-<a href="AddItem.jsp">Click Here to Add Item</a>
+<a class="btn btn-success" href="AddItem.jsp">Click Here to Add a New Item</a>
 <%} %>
 
 </body>

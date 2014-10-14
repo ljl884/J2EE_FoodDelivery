@@ -1,6 +1,9 @@
 <%@ page import="com.fooddelivery.model.*" %> 
 <%@ page import="java.util.*" %>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <p align="left"><% User user = (User)session.getAttribute("user");%>
+
 <%
 boolean isOwner=false;
 int user_restaurant = 0;
