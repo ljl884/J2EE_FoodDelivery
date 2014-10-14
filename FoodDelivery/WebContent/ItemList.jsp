@@ -38,14 +38,18 @@ session.setAttribute("user_id",""+user.getId());
 //request.setAttribute("res_id",1);
  %>
 <form action="ItemController?method=buy" method="post" id="buy">
-<input type="hidden" name="userid" value=<%=user.getId() %>>
-<input type="hidden" name="restaurantid" value=<%=1 %>>
+
 
 <%
 ArrayList<Item> list=new ArrayList<Item>();
 list = (ArrayList<Item>)request.getAttribute("result");	
+int restaurantid = 0;
+if(list.get(0)!=null){
+	restaurantid = rs.getRestaurantIdByItemId(list.get(0).getId());
+}
 %>
-
+<input type="hidden" name="userid" value=<%=user.getId() %>>
+<input type="hidden" name="restaurantid" value=<%=restaurantid%>>
 <% for(Item item:list) {
 out.println(item.getId());
 

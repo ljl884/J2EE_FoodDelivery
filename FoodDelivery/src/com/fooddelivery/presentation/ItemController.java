@@ -64,7 +64,7 @@ public class ItemController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	
 		String deleteidString = request.getParameter("delete_id");
 		String method=request.getParameter("method");
 		if(method==null){

@@ -38,7 +38,7 @@ public class OrderController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		String search_id=request.getParameter("id");
 		String typeString = request.getParameter("type");
 		OrderService os=new OrderService();
@@ -63,8 +63,9 @@ public class OrderController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	
 		String customer_Info=request.getParameter("receiver_name");
 		String payment=request.getParameter("payment");
 		String delivery_Address=request.getParameter("delivery_address");

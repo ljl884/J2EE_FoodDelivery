@@ -43,7 +43,9 @@ public class RestaurantService {
 	}
 	
 	public int getRestaurantIdByItemId(int itemid){
-		return MenuMapper.getMenu(ItemMapper.getItem(itemid).getMenuid()).getRestaurantid();
+		Item item = ItemMapper.getItem(itemid);
+		return item.getMenuid();
+		//return MenuMapper.getMenu(ItemMapper.getItem(itemid).getMenuid()).getRestaurantid();
 		
 	}
 	public int getRestaurantIdByMenuId(int menuid){
