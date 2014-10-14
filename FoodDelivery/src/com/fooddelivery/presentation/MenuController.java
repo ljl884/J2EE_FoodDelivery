@@ -32,6 +32,9 @@ public class MenuController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    /**Get the parameter "id", and parse to integer.
+     * handle the delete Item, and redirect to DeleteItemSuccess.jsp
+     */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String search_id=request.getParameter("id");
 		int new_id=Integer.parseInt(search_id);

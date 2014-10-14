@@ -37,8 +37,11 @@ public class RestaurantController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	/**
+	 * Handle the search function. Return the result to RestaurantList.jsp.
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+	//get parameter from text and button.
 		String keywords=request.getParameter("keywords");
 		String type_name=request.getParameter("search_name");
 		String type_category=request.getParameter("search_category");
@@ -46,7 +49,7 @@ public class RestaurantController extends HttpServlet {
 		String type_price=request.getParameter("search_price");
 		//System.out.println(type_name+"    "+type_category+"      "+type_location+"     "+type_price);
 		RestaurantService rs=new RestaurantService();
-		
+	//if hit search by price button	
 		if(type_price!=null){
 			if(type_price.equals("search by price")){
 			   //int new_keywords=Integer.parseInt(keywords);
@@ -55,6 +58,7 @@ public class RestaurantController extends HttpServlet {
 				getServletConfig().getServletContext().getRequestDispatcher("/RestaurantList.jsp").forward(request,response);
 			}
 			}
+	//if hit the search by category button
 		else if(type_category!=null){
 		    if(type_category.equals("search by category")){
 			
@@ -63,6 +67,7 @@ public class RestaurantController extends HttpServlet {
 			getServletConfig().getServletContext().getRequestDispatcher("/RestaurantList.jsp").forward(request,response);
 		}
 		}
+	//if hit search by location button
 		else if(type_location!=null){
 		if(type_location.equals("search by location")){
 			 List<Restaurant> result=rs.getRestaurantsByLocation(keywords);
@@ -70,6 +75,7 @@ public class RestaurantController extends HttpServlet {
 				getServletConfig().getServletContext().getRequestDispatcher("/RestaurantList.jsp").forward(request,response);
 		}
 		}
+	//if hit search by name button
 		else if(type_name!=null){
 		if(type_name.equals("search by name")){
 			List<Restaurant> result=rs.getRestaurantsByName(keywords);
