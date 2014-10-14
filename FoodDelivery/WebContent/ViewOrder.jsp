@@ -28,8 +28,7 @@ else {
 		isOwner=true;
 	} %>
 <% 
-//String res_id =(String)request.getSession().getAttribute("res_id");
-//String user_id =(String)request.getSession().getAttribute("user_id");
+
 OrderService orderService=new OrderService();
 if(isOwner){
 	List<PendingOrder> list=orderService.getOrdersByRestaurantId(user_restaurant);
@@ -38,57 +37,64 @@ if(isOwner){
 	<%
 	
     
-    out.println("ID"+pendingorder.getId()+":");
+    out.println("ORDER"+pendingorder.getId()+":");
     %><br>
     
     <%
 		
 	    
-		out.println("User ID:"+pendingorder.getOrder().getUserid());
+		out.println("&nbsp&nbsp&nbsp&nbsp&nbsp"+"User ID:"+pendingorder.getOrder().getUserid()+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp");
 		out.println("Status:"+pendingorder.getOrder().getStatus());
-		out.println("Customer Name:"+pendingorder.getCustomerInfo().getName());
-		out.println("Delivery Address:"+pendingorder.getDeliverAddress().getAddress());
-		out.println("Payment Method:"+pendingorder.getPaymentMethod().getName());%><br>
+		%><br>
+        <%out.println("&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+"Customer Name:"+pendingorder.getCustomerInfo().getName()+"&nbsp&nbsp&nbsp&nbsp");
+        out.println("Delivery Address:"+pendingorder.getDeliverAddress().getAddress()+"&nbsp&nbsp&nbsp&nbsp");
+        out.println("Payment Method:"+pendingorder.getPaymentMethod().getName()+"&nbsp&nbsp&nbsp&nbsp");%><br>
 	    <%
 		
-		if (!orderService.isOrderConfirmed(pendingorder.getId())){ %>
-	     <a href="OrderController?type=confirm&id=<%=pendingorder.getId()%>">confirm</a><br>
-
-		<%}
+		
 		
 		List<OrderItem> Itemlist=pendingorder.getOrderItems();
 		for(OrderItem orderitem:Itemlist){
-			out.println("Item ID:"+orderitem.getItemid());
-			out.println("Count:"+orderitem.getCount());
-		}
-	}
+            out.println("&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+"Item ID:"+orderitem.getItemid()+"&nbsp&nbsp&nbsp&nbsp");
+            out.println("Count:"+orderitem.getCount()+"&nbsp&nbsp&nbsp&nbsp");%><br><%
+		}%><br><%
+		if (!orderService.isOrderConfirmed(pendingorder.getId())){ %>
+	    <b> <a href="OrderController?type=confirm&id=<%=pendingorder.getId()%>">Confirm</a></b><br>
+
+		<% }%>
+	   <hr><%	
+	  }
 	}
 else{
 	List<PendingOrder> list=orderService.getOrdersByUserId(user.getId());
 	for(PendingOrder pendingorder:list){
-    out.println("ID"+pendingorder.getId()+":");
+    out.println("ORDER"+pendingorder.getId()+":");
     %><br>
 
     <%
 		
 	    
-		out.println("Restaurant ID:"+pendingorder.getOrder().getRestaurantid()+"   ");
-		out.println("Status:"+pendingorder.getOrder().getStatus()+"   ");
-		out.println("Customer Name:"+pendingorder.getCustomerInfo().getName()+"   ");
-		out.println("Delivery Address:"+pendingorder.getDeliverAddress().getAddress()+"   ");
-		out.println("Payment Method:"+pendingorder.getPaymentMethod().getName()+"   ");
+		out.println("&nbsp&nbsp&nbsp&nbsp&nbsp"+"Restaurant ID:"+pendingorder.getOrder().getRestaurantid()+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp");
+		out.println("Status:"+pendingorder.getOrder().getStatus());
+		%><br>
+        <%
+		out.println("&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+"Customer Name:"+pendingorder.getCustomerInfo().getName()+"&nbsp&nbsp&nbsp&nbsp");
+		out.println("Delivery Address:"+pendingorder.getDeliverAddress().getAddress()+"&nbsp&nbsp&nbsp&nbsp");
+		out.println("Payment Method:"+pendingorder.getPaymentMethod().getName()+"&nbsp&nbsp&nbsp&nbsp");
 		%><br>
 		<%
 		
-		if (!orderService.isOrderConfirmed(pendingorder.getId())){ %>
-		<a  href="OrderController?type=delete&id=<%=pendingorder.getId()%>">delete</a><br>
-		<%}
+		
 		
 		List<OrderItem> Itemlist=pendingorder.getOrderItems();
 		for(OrderItem orderitem:Itemlist){
-			out.println("Item ID:"+orderitem.getItemid());
-			out.println("Count:"+orderitem.getCount());
-		}
+			out.println("&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+"Item ID:"+orderitem.getItemid()+"&nbsp&nbsp&nbsp&nbsp");
+			out.println("Count:"+orderitem.getCount()+"&nbsp&nbsp&nbsp&nbsp");%><br><%
+		}%><br>
+		<%
+		if (!orderService.isOrderConfirmed(pendingorder.getId())){ %>
+		<b><a  href="OrderController?type=delete&id=<%=pendingorder.getId()%>">Delete</a></b><br>
+		<%}%><hr><%
 	}
 	}
 
