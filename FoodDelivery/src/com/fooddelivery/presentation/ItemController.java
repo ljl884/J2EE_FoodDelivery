@@ -36,6 +36,7 @@ public class ItemController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//
 		String search_id=request.getParameter("id");
 		int new_id=Integer.parseInt(search_id);
 		request.getSession().setAttribute("menu_id", new_id);
